@@ -1,0 +1,31 @@
+.navbarCtn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    height: 60px;
+    position: fixed;
+    border-bottom: 0.5px solid black;
+    padding-left: 20px;
+}
+
+.linksContainer {
+    display: flex;
+    padding-right: 20px;
+}
+
+.link {
+    color: black;
+    margin-right: 20px;
+}
+
+.logo {
+    margin-right: auto;
+    color:black;
+}
+
+

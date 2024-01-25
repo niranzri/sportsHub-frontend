@@ -23,8 +23,8 @@ function App() {
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
         <Route path='/company/:companyId' element={<CompanyProfilePage />} />
-        <Route path='/company/:activityId' element={<CompanyActivityDetailsPage />} />
-        <Route path='company/createActivity' element={<CompanyCreateActivityPage />} /> 
+        <Route path='/companies/:companyId/:activityId' element={<CompanyActivityDetailsPage />} />
+        <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
         <Route path='/myProfile' element={<PersonProfilePage />} />
         <Route path='/myActivities' element={<PersonMyActivitiesPage />} />
         <Route path='*' element={<h1>404 Page not found</h1>} />

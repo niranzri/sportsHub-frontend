@@ -1,0 +1,22 @@
+.body{
+    margin:0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.hero {
+    background-image: url('../pictures/yoga.jpg'); 
+    background-size: cover;
+    background-position: center;
+    width: 100vw; 
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+    text-align: center;
+    color: white;
+}
+
+.content {
+    padding: 20px;
+    text-align: center;
+}
