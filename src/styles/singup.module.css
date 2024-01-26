@@ -1,0 +1,91 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+}
+
+.form label {
+    margin-bottom: 10px;
+}
+  
+.form input,
+.form button {
+    padding: 5px;
+    margin-bottom: 10px;
+    cursor: pointer; /* Set the cursor to pointer */
+  }
+
+/*
+
+.browserCtn {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 180px;
+    border-radius: 5px;
+    color: #08225a;
+    background-color: rgba(255, 255, 255, 0.4);
+    z-index: 1;
+    backdrop-filter: blur(10px);
+}
+
+.browserCtn:before {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.5);
+    top: 0;
+    left: 0;
+} 
+
+form {
+    box-sizing: border-box; 
+    padding: 2%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    flex-wrap: wrap;
+}
+
+.inputCtn {
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.inputCtn label {
+    margin-right: 10px;
+}
+
+.inputCtn input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 100%; 
+    font-weight: normal;
+}
+
+button {
+    padding: 15%;
+    margin-left: 10%;
+    background-color: #08225a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+button:hover {
+    background-color: #529eee; 
+}
+
+*/
