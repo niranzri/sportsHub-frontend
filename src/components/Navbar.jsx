@@ -6,11 +6,11 @@ const Navbar = () => {
 
   return (  
     <div className={classes.navbarCtn}>  
-        <Link to='/' className={`${classes.link} ${classes.logo}`}>Home</Link>
+        <Link to='/' className={`${classes.link} ${classes.logo}`}>home</Link>
         <div className={classes.linksContainer}>
-            <Link to='/login' className={classes.link}>Login</Link> 
-            <Link to='/signup' className={classes.link}>SignUp</Link>   
-            {/* <Link to='/profile' className={classes.link}>profile</Link> */}
+            <Link to='/login' className={classes.link}>login</Link> 
+            <Link to='/signup' className={classes.link}>sign up</Link>   
+            <Link to='/profile' className={classes.link}>profile</Link> 
            
             </div>
         </div>

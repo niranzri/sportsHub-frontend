@@ -10,10 +10,10 @@ import CompanyCreateActivityPage from './pages/CompanyCreateActivityPage.jsx'
 import PersonProfilePage from './pages/PersonProfilePage'
 import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
+import ErrorPage from './pages/ErrorPage.jsx'
 
 
 function App() {
- 
 
   return (
     <>
@@ -27,7 +27,7 @@ function App() {
         <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
         <Route path='/myProfile' element={<PersonProfilePage />} />
         <Route path='/myActivities' element={<PersonMyActivitiesPage />} />
-        <Route path='*' element={<h1>404 Page not found</h1>} />
+        <Route path='*' element={<ErrorPage/>} />
       </Routes>
     </>
   )
