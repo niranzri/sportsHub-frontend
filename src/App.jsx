@@ -7,6 +7,7 @@ import SignupPage from './pages/SignupPage'
 import CompanyProfilePage from './pages/CompanyProfilePage.jsx'
 import CompanyActivityDetailsPage from './pages/CompanyActivityDetailsPage'
 import CompanyCreateActivityPage from './pages/CompanyCreateActivityPage.jsx'
+import AllActivitiesPage from './pages/AllActivitiesPage.jsx'
 import PersonProfilePage from './pages/PersonProfilePage'
 import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
@@ -22,11 +23,10 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
-        <Route path='/company/:companyId' element={<CompanyProfilePage />} />
+        <Route path='/companies/:companyId' element={<CompanyProfilePage />} />
         <Route path='/companies/:companyId/:activityId' element={<CompanyActivityDetailsPage />} />
         <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
-        <Route path='/myProfile' element={<PersonProfilePage />} />
-        <Route path='/myActivities' element={<PersonMyActivitiesPage />} />
+        <Route path='/allActivities' element={<AllActivitiesPage />} />
         <Route path='*' element={<h1>404 Page not found</h1>} />
       </Routes>
     </>
@@ -34,3 +34,7 @@ function App() {
 }
 
 export default App
+
+        /*
+<Route path='/myProfile' element={<PersonProfilePage />} />
+<Route path='/myActivities' element={<PersonMyActivitiesPage />} />*/
