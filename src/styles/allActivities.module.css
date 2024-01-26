@@ -48,7 +48,7 @@ position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    color: white;
+    color: rgb(0, 17, 255);
     font-size: 25px;
     pointer-events: none;
     z-index:4;

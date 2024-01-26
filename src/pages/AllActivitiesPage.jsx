@@ -33,11 +33,12 @@ const AllActivitiesPage = () => {
             <div className={classeActivities.item} >
               
                 <Link to={`/activityDetails/${activity._id}`}>
-                  <p>{activity.type}</p>
+                <p className={classeActivities.text}>{activity.type}</p>
+                  
                   {<img src={activity.image}  />}
                 </Link>
               
-             </div>
+            </div>
         </div>
             ))}
           
