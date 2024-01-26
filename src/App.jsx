@@ -12,6 +12,7 @@ import PersonProfilePage from './pages/PersonProfilePage'
 import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
 import ErrorPage from './pages/ErrorPage.jsx'
+import ActivityDetailsPage from './pages/ActivityDetailsPage.jsx'
 
 
 function App() {
