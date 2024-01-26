@@ -10,13 +10,30 @@
     background-size: cover;
     background-position: center;
     width: 100vw; 
-    height: calc(100vh - 140px);
+    height: calc(100vh - 60px);
     top: 60px;
     text-align: center;
     color: white;
+    display: flex; 
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
 }
 
-.content {
+.buttonCtn button {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin: 0 5px;
+    padding: 6px 8px; 
+    border-radius: 16px;
+    width: 100px;
+    margin-top: 50px;
+    cursor: pointer;
+    border: none;
+  }
+
+ .content {
   top: 60px;
     padding: 0px;
     text-align: center;
