@@ -28,7 +28,7 @@ function App() {
         <Route path='/companies/:companyId/:activityId' element={<CompanyActivityDetailsPage />} />
         <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
         <Route path='/allActivities' element={<AllActivitiesPage />} />
-        <Route path='/activityDetails' element={<ActivityDetailsPage />} />
+        <Route path='/activityDetails/:activityId' element={<ActivityDetailsPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
     </>
