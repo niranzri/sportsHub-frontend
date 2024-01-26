@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
-import classes from '../styles/signup.module.css';
+import classes from '../styles/form.module.css';
 import Select from 'react-select';
 // import { AuthContext } from "../contexts/AuthContext"
 
@@ -10,7 +10,7 @@ const [name, setName] = useState('');
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [companies, setCompanies] = useState([]);
-const [company, setCompany] = useState('');
+const [company, setCompany] = useState([]);
 
 const navigate = useNavigate()
 
@@ -23,7 +23,7 @@ const fetchCompanies = async () => {
 
         const formattedCompanies = companiesData.map(company => ({
             label: company.name,
-            value: company.name,
+            value: company,
           }));
 
         setCompanies(formattedCompanies)
@@ -39,7 +39,9 @@ const fetchCompanies = async () => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
-    const credentials = { name, email, password, company };
+    console.log("Selected Company:", company.value); 
+    const credentials = { name, email, password, company: company.value };
+    console.log(credentials)
 
     try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
@@ -54,7 +56,7 @@ const handleSubmit = async (event) => {
           }
 
     } catch (error) {
-        console.log(error);
+        console.log({error, message: "Error while posting user"});
     }
 };
 
@@ -81,38 +83,46 @@ return (
                 required/>
         </label>
         <label> <span> Company: </span> 
+                <div className={classes.companyCtn}>
                 <Select 
                 options={companies}
-                value={companies.find(option => option.value === company)}
-                onChange={selectedOption => setCompany(selectedOption.name)}
+                value={companies.find(selectedOption => selectedOption.value === company)}
+                getOptionLabel={selectedOption => selectedOption.label}
+                onChange={selectedOption => setCompany(selectedOption)}
+                menuPosition="fixed"
                 styles={{
+                    container: (provided) => ({
+                        ...provided,
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                        padding: '0',
+                        margin: '0',
+                        width: '100%',
+                        cursor: 'pointer',
+                    }),
                     input: (provided) => ({
                         ...provided,
                         flex: 1, 
-                        width: '100%'// Input takes the remaining space
+                        display: 'flex',
+                        fontSize: '14px',
                       }),
                     control: (provided) => ({
                         ...provided,
                         width: '100%', 
-                        height: '50%', // Adjust height as needed
-                        display: 'flex',
-                        textAlign: 'left',
-                        marginLeft: '10%',
-                        borderRadius: '4px', // Match the border radius of other inputs
-                        border: '1px solid #ccc', // Match the border style of other inputs
-                        boxShadow: 'none', // Remove box-shadow
+                        borderRadius: '4px', 
+                        border: '1px solid #ccc', 
                       }),
                       menu: (provided) => ({
                         ...provided,
-                        borderRadius: '4px', // Optional: Match the border radius of other inputs
-                        border: '1px solid #ccc', // Optional: Match the border style of other inputs
-                        boxShadow: 'none', // Optional: Remove box-shadow
+                        borderRadius: '4px', 
+                        border: '1px solid #ccc', 
                       }),
                 }}
                 />
+                </div>
         </label>
-        <button type='submit'>Sign Up as User</button>
-      { /* <button type='submit' style={{backgroundColor:'aqua'}}>Sign Up as Company</button> */}
+        <button type='submit' className={classes.accessButton}> Sign Up </button>
     </form>
     </div>
  );

@@ -16,28 +16,34 @@
     justify-content: center;
     align-items: center; 
     margin-top: 5%;
-    background-color: rgb(143, 218, 189);
+    background-color: rgb(184, 215, 212);
     border-radius: 8px;
-    width: 50vw;
+    width: 60vw;
     padding: 2%;
     box-sizing: border-box;
+    color: black;
 }
 
 .form label {
     width: 100%;
     height: 50px;
-    padding: 0%;
-    cursor: pointer;
     display: flex;
-    //justify-content: space-between;
-    //align-items: center;
 }
 
 .form label span {
     width: 20%;
     text-align: left;
     padding-left: 5%;
-    
+}
+
+.companyCtn {
+    width: auto;
+    height: 50%;
+    flex: 1;
+    text-align: left;
+    margin-left: 10%;
+    color: black;
+    font-size: 14px;
 }
 
 .form label input {
@@ -46,17 +52,9 @@
     flex: 1;
     text-align: left;
     margin-left: 10%;
-    //justify-content: center;
-    //align-items: center;
-}
-
-.company {
-    display: flex;
-    flex-direction: row;
-    margin: 10px 0;
-    width: 100%;
-    margin-bottom: 10px;
-    cursor: pointer;
+    background-color: white;
+    color: black;
+    font-size: 14px;
 }
   
 .form input,
@@ -66,32 +64,31 @@
     cursor: pointer;
 }
 
-.form .react-select__control,
-.form .react-select__control--is-focused {
-  cursor: pointer;
-}
-
 .form input {
     border: 1px solid #ccc;
     border-radius: 4px; 
 }
 
-/*
+.text {
+    color: black;
+}
 
-button {
-    padding: 15%;
-    margin-left: 10%;
-    background-color: #08225a;
+.accessButton {
+    padding: 10%;
+    width: 80px;
+    height: 35px;
+    background-color: #738685;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Roboto', sans-serif;
+    box-sizing: none;
   }
-  
-button:hover {
-    background-color: #529eee; 
-}
 
-*/
+button:hover {
+    //background-color: #C5B8D7; 
+    //color: white;
+    background-color: #455150;
+}

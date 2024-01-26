@@ -1,6 +1,7 @@
 import { useContext, useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
 import { AuthContext } from '../contexts/AuthContext'
+import classes from '../styles/form.module.css';
 
 const LoginPage = () => {
 
@@ -26,8 +27,7 @@ const handleSubmit = async (event) => {
             const parsed = await response.json()
             console.log(parsed)
             saveToken(parsed.authToken)
-            navigate('/')
-            // navigate('/') // change navigation once we have the routes figured out
+            navigate('/') // Navigate to user page - currently '/companies/:companyId', but I would do /:userId
           }
 
     } catch (error) {
@@ -35,19 +35,29 @@ const handleSubmit = async (event) => {
     }
 };
 
-return ( 
-    <>
-    <form onSubmit={handleSubmit}  style={{ display: 'flex', flexDirection: 'column' }}>
-        <label>Email:
-            <input value={email} onChange={event => setEmail (event.target.value)} required/></label>
-        <label>Password:
-            <input value={password} onChange={event => setPassword (event.target.value)} required/></label>
-        <button type='submit' style={{backgroundColor:'aqua'}}>Login</button>
+return (
+    <div className={classes.pageCtn}> 
+    <form onSubmit={handleSubmit} className={classes.form}>
+        <label> <span> E-mail: </span>
+            <input 
+                value={email} 
+                onChange={event => setEmail (event.target.value)} 
+                required/>
+        </label>
+        <label> <span> Password: </span>
+                <input 
+                value={password} 
+                onChange={event => setPassword (event.target.value)} 
+                required/>
+        </label>
+
+        <button type='submit' className={classes.accessButton}> Log In </button>
     </form>
-        <p>Don't have an account yet?</p>
-        <Link to={'/signup'}> Sign Up</Link>
-    </>
+    <p className={classes.text}>Don't have an account yet?</p>
+        <Link to={'/signup'}> <span> Sign Up </span> </Link>
+    </div>
  );
+
 }
  
 export default LoginPage;
