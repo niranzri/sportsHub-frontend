@@ -58,37 +58,63 @@ const handleSubmit = async (event) => {
     }
 };
 
-    {/* <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center' }}>*/} 
+ 
 return (
-    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center'}}>
-        <label> Name:
+    <div className={classes.pageCtn}> 
+    <form onSubmit={handleSubmit} className={classes.form}>
+        <label> <span> Name: </span>
             <input 
                 value={name} 
                 onChange={event => setName (event.target.value)} 
                 required/>
         </label>
-        <label> Email:
+        <label> <span> E-mail: </span>
             <input 
                 value={email} 
                 onChange={event => setEmail (event.target.value)} 
                 required/>
         </label>
-        <label> Password: 
+        <label> <span> Password: </span>
                 <input 
                 value={password} 
                 onChange={event => setPassword (event.target.value)} 
                 required/>
         </label>
-        <label> Company: </label>
+        <label> <span> Company: </span> 
                 <Select 
                 options={companies}
                 value={companies.find(option => option.value === company)}
                 onChange={selectedOption => setCompany(selectedOption.name)}
+                styles={{
+                    input: (provided) => ({
+                        ...provided,
+                        flex: 1, 
+                        width: '100%'// Input takes the remaining space
+                      }),
+                    control: (provided) => ({
+                        ...provided,
+                        width: '100%', 
+                        height: '50%', // Adjust height as needed
+                        display: 'flex',
+                        textAlign: 'left',
+                        marginLeft: '10%',
+                        borderRadius: '4px', // Match the border radius of other inputs
+                        border: '1px solid #ccc', // Match the border style of other inputs
+                        boxShadow: 'none', // Remove box-shadow
+                      }),
+                      menu: (provided) => ({
+                        ...provided,
+                        borderRadius: '4px', // Optional: Match the border radius of other inputs
+                        border: '1px solid #ccc', // Optional: Match the border style of other inputs
+                        boxShadow: 'none', // Optional: Remove box-shadow
+                      }),
+                }}
                 />
+        </label>
         <button type='submit'>Sign Up as User</button>
       { /* <button type='submit' style={{backgroundColor:'aqua'}}>Sign Up as Company</button> */}
     </form>
-   
+    </div>
  );
 }
  
