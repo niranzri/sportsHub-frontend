@@ -7,6 +7,9 @@ const AuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
+//boolean to check if user is already login
+  let isLogin = false;
+
   const saveToken = tokenFromLogin => {
     setToken(tokenFromLogin)
     setIsAuthenticated(true)
@@ -27,6 +30,7 @@ const AuthContextProvider = ({ children }) => {
         },
       })
       if (response.status === 200) {
+        isLogin = true;
         setToken(tokenToVerify)
         setIsAuthenticated(true)
         setIsLoading(false)

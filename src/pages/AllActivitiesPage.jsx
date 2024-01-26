@@ -1,10 +1,14 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar.jsx';
 import classeActivities from '../styles/allActivities.module.css'
+import { AuthContext } from '../contexts/AuthContext'
+
+let boolean = false;
 
 const AllActivitiesPage = () => {
     const [activities, setActivities] = useState([])
+    const { isLogin } = useContext(AuthContext)
     const fetchActivities = async () => {
         try {
           const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`)
@@ -18,6 +22,10 @@ const AllActivitiesPage = () => {
         }
       }
 
+      if(isLogin){
+        boolean = true;
+      }
+
 
       useEffect(() => {
         fetchActivities()
@@ -25,7 +33,12 @@ const AllActivitiesPage = () => {
       return (
         <div>
             <Navbar/>  
-            <div className={classeActivities.container}>
+            <div className={classeActivities.outCtn}>
+            <p>See your activities</p>
+            {boolean ? <Link to={`/CompanyCreateActivityPage`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+            
+            </div>
+            <div className={classeActivities.mainCtn}>
           
     
             {activities.map(activity => (
