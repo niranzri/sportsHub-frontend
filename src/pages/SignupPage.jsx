@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom'
+import classes from '../styles/signup.module.css';
 import Select from 'react-select';
-import classes from './styles/signup.module.css';
 // import { AuthContext } from "../contexts/AuthContext"
 
 const SignupPage = () => {
@@ -39,7 +39,7 @@ const fetchCompanies = async () => {
 
 const handleSubmit = async (event) => {
     event.preventDefault();
-    const credentials = { name, email, password, company: company.name };
+    const credentials = { name, email, password, company };
 
     try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
@@ -58,9 +58,9 @@ const handleSubmit = async (event) => {
     }
 };
 
-//<form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center' }}>
-return ( 
-    <form onSubmit={handleSubmit} className={classes.form}>
+    {/* <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center' }}>*/} 
+return (
+    <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', justifyContent:'center', alignItems:'center'}}>
         <label> Name:
             <input 
                 value={name} 
