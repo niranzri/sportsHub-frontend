@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { useNavigate, Link } from 'react-router-dom'
+import { AuthContext } from '../contexts/AuthContext'
 
 const LoginPage = () => {
 
@@ -7,6 +8,7 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 
 const navigate = useNavigate()
+const { saveToken } = useContext(AuthContext)
 
 const handleSubmit = async (event) => {
     event.preventDefault();
@@ -24,6 +26,7 @@ const handleSubmit = async (event) => {
             const parsed = await response.json()
             console.log(parsed)
             saveToken(parsed.authToken)
+            navigate('/')
             // navigate('/') // change navigation once we have the routes figured out
           }
 

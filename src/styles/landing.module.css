@@ -10,13 +10,14 @@
     background-size: cover;
     background-position: center;
     width: 100vw; 
-    height: calc(100vh - 60px);
-    margin-top: 60px;
+    height: calc(100vh - 140px);
+    top: 60px;
     text-align: center;
     color: white;
 }
 
 .content {
-    padding: 20px;
+  top: 60px;
+    padding: 0px;
     text-align: center;
 }
