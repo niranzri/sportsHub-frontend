@@ -50,13 +50,6 @@ const navigate = useNavigate()
   const handleCompanyChange = (value) => {
     if (value && value.label === 'Other') {
       setShowCompanyFields(true);
-      const newCompany = {
-        name: companyName,
-        city: companyCity,
-        address: companyAddress,
-        postcode: companyPostcode
-      }
-      setCompany({label: newCompany.name, value: newCompany}) 
     } else if (value) {
       setShowCompanyFields(false);
       setCompany(value);
@@ -163,6 +156,7 @@ const navigate = useNavigate()
   return (
     <div className={classes.pageCtn}> 
       <form onSubmit={handleSubmit} className={classes.form}>
+      <p> User information </p>
         <label> <span> Name: </span>
           <input 
                 value={name} 
@@ -238,8 +232,9 @@ const navigate = useNavigate()
         </label>
         {showCompanyFields && (
           <>
+          <p> Company information </p>
             <label>
-              <span> Company Name: </span>
+              <span> Name: </span>
               <input
                 value={companyName}
                 onChange={(event) => setCompanyName(event.target.value)}
@@ -247,7 +242,7 @@ const navigate = useNavigate()
               />
             </label>
             <label>
-              <span> Company City: </span>
+              <span> City: </span>
               <input
                 value={companyCity}
                 onChange={(event) => setCompanyCity(event.target.value)}
@@ -255,7 +250,7 @@ const navigate = useNavigate()
               />
             </label>
             <label>
-              <span> Company Address: </span>
+              <span> Address: </span>
               <input
                 value={companyAddress}
                 onChange={(event) => setCompanyAddress(event.target.value)}
@@ -263,7 +258,7 @@ const navigate = useNavigate()
               />
             </label>
             <label>
-              <span> Company Postcode: </span>
+              <span> Postcode: </span>
               <input
                 value={companyPostcode}
                 onChange={(event) => setCompanyPostcode(event.target.value)}
@@ -272,16 +267,19 @@ const navigate = useNavigate()
             </label>
           </>
         )}
-        <button 
-          type='button' 
-          onClick={handleAddCompany} 
-          className={classes.accessButton}> 
-          Add company 
-        </button>
-        <button type='submit' 
-          className={classes.accessButton}> 
-          Sign Up 
-        </button>
+        <div className={classes.btnCtn}>
+          {showCompanyFields && (
+          <button 
+            type='button' 
+            onClick={handleAddCompany} 
+            className={classes.accessButton}> 
+            Add company 
+          </button>)}
+          <button type='submit' 
+            className={classes.accessButton}> 
+            Sign Up 
+          </button>
+        </div>
       </form>
     </div>
  );

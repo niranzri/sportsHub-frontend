@@ -82,6 +82,15 @@
     height: auto;
 }
 
+.buttonCtn {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
 .notification {
     height: auto;
     width: 65%;
@@ -92,7 +101,8 @@
 
 .accessButton {
     padding: 10%;
-    width: 80px;
+    margin: 10px;
+    width: 100px;
     height: 35px;
     background-color: #738685;
     color: white;
