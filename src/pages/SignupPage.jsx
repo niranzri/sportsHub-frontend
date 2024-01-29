@@ -19,6 +19,7 @@ const [companyPostcode, setCompanyPostcode] = useState('');
 
 const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
+const [isCompanyAdded, setIsCompanyAdded] = useState(false);
 
 const navigate = useNavigate()
 
@@ -56,7 +57,6 @@ const navigate = useNavigate()
         postcode: companyPostcode
       }
       setCompany({label: newCompany.name, value: newCompany}) 
-
     } else if (value) {
       setShowCompanyFields(false);
       setCompany(value);
@@ -85,15 +85,8 @@ const navigate = useNavigate()
     }
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    if (!isPasswordValid) {
-      console.log("Password does not meet the format requirements");
-      return;
-    }
-
-    if (!company.value.hasOwnProperty("_id")) {
+  const handleAddCompany = async () => {
+    if (!company?.value?._id) {
       const newCompany = {
         name: companyName,
         city: companyCity,
@@ -101,6 +94,7 @@ const navigate = useNavigate()
         postcode: companyPostcode
       }
 
+    try {
       const postCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -109,25 +103,44 @@ const navigate = useNavigate()
   
       if (postCompanyResponse.status === 201) {
         const newCompanyResponse = await postCompanyResponse.json();
-        console.log("New company", newCompanyResponse); // defined
-        setCompany({label: newCompanyResponse.name, value: newCompanyResponse})
-        console.log("New company after state change", company) // defined
+        // console.log("New company", newCompanyResponse); // defined
 
+        setCompany({label: newCompanyResponse.name, value: newCompanyResponse})
+        setIsCompanyAdded(true);
+        
         const fetchCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies/${newCompanyResponse._id}`);
         const fetchedCompany = await fetchCompanyResponse.json();
-        console.log("Fetched company", fetchedCompany)
+        // console.log("Fetched company", fetchedCompany)
 
       // Update the state with the fetched company
         setCompany({ label: fetchedCompany.name, value: fetchedCompany });
-        
+      
       } else {
         console.log("Failed to create new company");
       }
+    } catch (error) {
+      console.log({error, message: "Error while posting new company"})
+    }
+    }
+  }
+  
+  // console.log("Created company", company); 
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!isPasswordValid) {
+      console.log("Password does not meet the format requirements");
+      return;
     }
 
-    console.log("Updated state", company); 
+    if (!isCompanyAdded) {
+      console.log("Password does not meet the format requirements");
+      return;
+    }
+
     const credentials = { name, email, password, company};
-    console.log(credentials) //undefined
+    //console.log(credentials) 
 
     try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
@@ -144,6 +157,8 @@ const navigate = useNavigate()
         console.log({error, message: "Error while posting user"});
     }
   };
+
+  // console.log("Updated state", company); 
 
   return (
     <div className={classes.pageCtn}> 
@@ -187,7 +202,6 @@ const navigate = useNavigate()
                 options={companies}
                 value={company}
                 getOptionLabel={selectedOption => selectedOption.label}
-                //onChange={selectedOption => setCompany(selectedOption)}
                 onChange={handleCompanyChange}
                 menuPosition="fixed"
                 styles={{
@@ -258,7 +272,16 @@ const navigate = useNavigate()
             </label>
           </>
         )}
-        <button type='submit' className={classes.accessButton}> Sign Up </button>
+        <button 
+          type='button' 
+          onClick={handleAddCompany} 
+          className={classes.accessButton}> 
+          Add company 
+        </button>
+        <button type='submit' 
+          className={classes.accessButton}> 
+          Sign Up 
+        </button>
       </form>
     </div>
  );

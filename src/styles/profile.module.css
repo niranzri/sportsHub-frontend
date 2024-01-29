@@ -7,4 +7,17 @@
     margin-top: 60px;
     height: calc(100vh - 60px);
     overflow-y: auto; /* adds scroll if content overflows */
+    width: 100vw;
+  }
+
+  .profileCtn {
+    flex: 3;
+    height: 100vh;
+    background-color: red;
+    border: 1px solid black;
+  }
+
+  .activitiesCtn {
+    flex: 7;
+    height: 100vh;
   }
