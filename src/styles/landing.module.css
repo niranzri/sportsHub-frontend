@@ -1,40 +1,75 @@
-.body{
-    margin:0;
+.body {
+    margin: 0;
     padding: 0;
     width: 100%;
     overflow-x: hidden;
-}
-
-.hero {
-    background-image: url('../pictures/yoga.jpg'); 
+  }
+  
+  .hero {
+    background-image: url('../pictures/yoga.jpg');
+    object-fit: cover;
     background-size: cover;
     background-position: center;
-    width: 100vw; 
+    width: 100vw;
     height: calc(100vh - 60px);
     top: 60px;
     text-align: center;
     color: white;
-    display: flex; 
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-}
-
-.buttonCtn button {
     display: flex;
-    justify-content: center; 
-    align-items: center; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .buttonCtn button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     margin: 0 5px;
-    padding: 6px 8px; 
+    padding: 6px 8px;
     border-radius: 16px;
     width: 100px;
     margin-top: 50px;
     cursor: pointer;
     border: none;
   }
+  
+  .bellowHero {
+   /* background-color: rgb(25, 30, 36); */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    gap: 20px;
 
- .content {
-  top: 60px;
-    padding: 0px;
-    text-align: center;
-}
+  }
+
+  .featureSection {
+    background-color: rgb(25, 30, 36); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    height: 300px;
+  }
+  
+  .imageContainer {
+    flex: 1;
+    padding-right: 20px;
+  }
+  
+  .imageContainer img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .textContent {
+    flex: 1;
+    background-color: #f2f2f2; 
+    padding: 20px;
+    color: black;
+    border-radius: 20px;
+    text-align: left;
+  }
+
+  
