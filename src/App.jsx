@@ -1,5 +1,3 @@
-import { useState } from 'react'
-import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import LandingPage from './pages/LandingPage.jsx'
 import LoginPage from './pages/LoginPage'
@@ -13,7 +11,7 @@ import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
 import ErrorPage from './pages/ErrorPage.jsx'
 import ActivityDetailsPage from './pages/ActivityDetailsPage.jsx'
-
+import './App.css'
 
 function App() {
 
@@ -24,7 +22,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
-        <Route path='/companies/:companyId' element={<CompanyProfilePage />} />
+        <Route path='/:userId' element={<CompanyProfilePage />} />
         <Route path='/companies/:companyId/:activityId' element={<CompanyActivityDetailsPage />} />
         <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
         <Route path='/allActivities' element={<AllActivitiesPage />} />
