@@ -27,7 +27,7 @@ const handleSubmit = async (event) => {
             const parsed = await response.json()
             console.log(parsed)
             saveToken(parsed.authToken)
-            navigate('/') // Navigate to user page - currently '/companies/:companyId', but I would do /:userId
+            navigate(`/companies/${company_.id}`) // Navigate to company profile page 
           }
 
     } catch (error) {
