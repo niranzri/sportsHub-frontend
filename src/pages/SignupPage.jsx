@@ -11,6 +11,12 @@ const [password, setPassword] = useState('');
 const [companies, setCompanies] = useState([]);
 const [company, setCompany] = useState(null);
 
+const [showCompanyFields, setShowCompanyFields] = useState(false);
+const [companyName, setCompanyName] = useState('');
+const [companyCity, setCompanyCity] = useState('');
+const [companyAddress, setCompanyAddress] = useState('');
+const [companyPostcode, setCompanyPostcode] = useState('');
+
 const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -27,7 +33,8 @@ const navigate = useNavigate()
             label: company.name,
             value: company,
           }));
-
+        
+        formattedCompanies.push({label: 'Other', value: 'Other'});
         setCompanies(formattedCompanies)
       }
     } catch (error) {
@@ -37,7 +44,24 @@ const navigate = useNavigate()
 
   useEffect(() => {
     fetchCompanies()
-  }, [])
+  }, []) 
+
+  const handleCompanyChange = (value) => {
+    if (value && value.label === 'Other') {
+      setShowCompanyFields(true);
+      const newCompany = {
+        name: companyName,
+        city: companyCity,
+        address: companyAddress,
+        postcode: companyPostcode
+      }
+      setCompany({label: newCompany.name, value: newCompany}) 
+
+    } else if (value) {
+      setShowCompanyFields(false);
+      setCompany(value);
+    }
+  }
 
   const handleEmailChange = (value) => {
     setEmail(value);
@@ -69,9 +93,41 @@ const navigate = useNavigate()
       return;
     }
 
-    //console.log("Selected Company:", company.value); 
-    const credentials = { name, email, password, company: company.value };
-    console.log(credentials)
+    if (!company.value.hasOwnProperty("_id")) {
+      const newCompany = {
+        name: companyName,
+        city: companyCity,
+        address: companyAddress,
+        postcode: companyPostcode
+      }
+
+      const postCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(newCompany),
+      });
+  
+      if (postCompanyResponse.status === 201) {
+        const newCompanyResponse = await postCompanyResponse.json();
+        console.log("New company", newCompanyResponse); // defined
+        setCompany({label: newCompanyResponse.name, value: newCompanyResponse})
+        console.log("New company after state change", company) // defined
+
+        const fetchCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies/${newCompanyResponse._id}`);
+        const fetchedCompany = await fetchCompanyResponse.json();
+        console.log("Fetched company", fetchedCompany)
+
+      // Update the state with the fetched company
+        setCompany({ label: fetchedCompany.name, value: fetchedCompany });
+        
+      } else {
+        console.log("Failed to create new company");
+      }
+    }
+
+    console.log("Updated state", company); 
+    const credentials = { name, email, password, company};
+    console.log(credentials) //undefined
 
     try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
@@ -81,7 +137,6 @@ const navigate = useNavigate()
         });
 
         if (response.status === 201) {
-            // The user was created successully
             navigate('/login')
           }
 
@@ -130,9 +185,10 @@ const navigate = useNavigate()
                 <div className={classes.companyCtn}>
                 <Select 
                 options={companies}
-                value={companies.find(selectedOption => selectedOption.value === company)}
+                value={company}
                 getOptionLabel={selectedOption => selectedOption.label}
-                onChange={selectedOption => setCompany(selectedOption)}
+                //onChange={selectedOption => setCompany(selectedOption)}
+                onChange={handleCompanyChange}
                 menuPosition="fixed"
                 styles={{
                     container: (provided) => ({
@@ -166,6 +222,42 @@ const navigate = useNavigate()
                 />
                 </div>
         </label>
+        {showCompanyFields && (
+          <>
+            <label>
+              <span> Company Name: </span>
+              <input
+                value={companyName}
+                onChange={(event) => setCompanyName(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span> Company City: </span>
+              <input
+                value={companyCity}
+                onChange={(event) => setCompanyCity(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span> Company Address: </span>
+              <input
+                value={companyAddress}
+                onChange={(event) => setCompanyAddress(event.target.value)}
+                required
+              />
+            </label>
+            <label>
+              <span> Company Postcode: </span>
+              <input
+                value={companyPostcode}
+                onChange={(event) => setCompanyPostcode(event.target.value)}
+                required
+              />
+            </label>
+          </>
+        )}
         <button type='submit' className={classes.accessButton}> Sign Up </button>
       </form>
     </div>

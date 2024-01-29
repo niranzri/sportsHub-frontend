@@ -1,0 +1,10 @@
+.pageCtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: 60px;
+    height: calc(100vh - 60px);
+    overflow-y: auto; /* adds scroll if content overflows */
+  }
