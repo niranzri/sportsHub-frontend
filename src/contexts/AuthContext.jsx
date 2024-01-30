@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export const AuthContext = createContext()
 
@@ -9,7 +10,7 @@ const AuthContextProvider = ({ children }) => {
 
   const [user, setUser] = useState()
   const [companyId, setCompanyId] = useState()
-
+  const navigate = useNavigate();
 
 
   let isLogin = false;
@@ -24,9 +25,8 @@ const AuthContextProvider = ({ children }) => {
     setToken()
     setIsAuthenticated(false)
     window.localStorage.removeItem('authToken')
+    navigate('/')
   }
-
-  
 
   const verifyToken = async tokenToVerify => {
     try {
