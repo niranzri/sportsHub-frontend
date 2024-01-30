@@ -5,54 +5,50 @@ import classeActivities from '../styles/allActivities.module.css';
 import { AuthContext } from '../contexts/AuthContext';
 
 const AllActivitiesPage = () => {
- 
+    const { isAuthenticated, user } = useContext(AuthContext);
     const [activities, setActivities] = useState([]);
     const [filteredActivities, setFilteredActivities] = useState([]);
     const [types, setTypes] = useState([]);
     const [selectedType, setSelectedType] = useState('');
 
-
-    const { isAuthenticated } = useContext(AuthContext);
-    let companyId = '';
-    if (isAuthenticated) {
-        const { user } = useContext(AuthContext);
-        companyId = user.company;
-    }
-
-    const fetchActivities = async () => {
-      console.log('Fetching activities...');
-        try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
-            if (response.ok) {
-                const activitiesData = await response.json();
-                setActivities(activitiesData);
-                setFilteredActivities(activitiesData);
-                fetchFilterOptions(); 
-            }
-        } catch (error) {
-            console.log(error);
-        }
-    };
-
-    const fetchFilterOptions = async () => {
-      try {
-          // Fetch all activities
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
-          if (response.ok) {
-              const activitiesData = await response.json();
-  
-              // Extract types from activities
-              const distinctTypes = [...new Set(activitiesData.map(activity => activity.type))];
-              setTypes(distinctTypes);
-          }
-      } catch (error) {
-          console.log(error);
-      }
-  };
-  
     useEffect(() => {
-      console.log('Activities:', activities);
+        const fetchActivities = async () => {
+            console.log('Fetching activities...');
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
+                if (response.ok) {
+                    const activitiesData = await response.json();
+                    setActivities(activitiesData);
+                    setFilteredActivities(activitiesData);
+                    fetchFilterOptions(); 
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+
         fetchActivities();
+    }, []);
+
+    useEffect(() => {
+        console.log('Activities:', activities);
+    }, [activities]);
+
+    useEffect(() => {
+        const fetchFilterOptions = async () => {
+            try {
+                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
+                if (response.ok) {
+                    const activitiesData = await response.json();
+                    const distinctTypes = [...new Set(activitiesData.map(activity => activity.type))];
+                    setTypes(distinctTypes);
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        };
+        
+        fetchFilterOptions();
     }, []);
 
     const handleFilter = () => {
@@ -70,7 +66,7 @@ const AllActivitiesPage = () => {
             <Navbar />
             <div className={classeActivities.outCtn}>
                 <p>See your activities</p>
-                {isAuthenticated ? <Link to={`/companies/${companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+                {isAuthenticated ? <Link to={`/companies/${user?.company}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
                 <div>
                     <select value={selectedType} onChange={e => setSelectedType(e.target.value)}>
                         <option value="">All Types</option>
