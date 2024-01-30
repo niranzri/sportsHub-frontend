@@ -7,7 +7,10 @@ const AuthContextProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
-//boolean to check if user is already login
+  const [user, setUser] = useState()
+
+
+
   let isLogin = false;
 
   const saveToken = tokenFromLogin => {
@@ -22,6 +25,8 @@ const AuthContextProvider = ({ children }) => {
     window.localStorage.removeItem('authToken')
   }
 
+  
+
   const verifyToken = async tokenToVerify => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/verify`, {
@@ -34,6 +39,14 @@ const AuthContextProvider = ({ children }) => {
         setToken(tokenToVerify)
         setIsAuthenticated(true)
         setIsLoading(false)
+        
+        const userData = await response.json();
+        setUser(userData);
+        console.log(userData)
+       let userId = userData._id
+        console.log(userId)
+
+        
       }
       if (response.status === 401) {
         throw new Error('Invalid Token')
@@ -72,7 +85,7 @@ const AuthContextProvider = ({ children }) => {
  
 
   return (
-    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken }}>
+    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, user }}>
       {children}
     </AuthContext.Provider>
   )

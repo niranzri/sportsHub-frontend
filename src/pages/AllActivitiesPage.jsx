@@ -8,7 +8,15 @@ let boolean = false;
 
 const AllActivitiesPage = () => {
     const [activities, setActivities] = useState([])
-    const { isLogin } = useContext(AuthContext)
+   // const [user, setUser] = useState('')
+    const { isAuthenticated } = useContext(AuthContext)
+    const { user } = useContext(AuthContext)
+    console.log(isAuthenticated)
+
+    console.log(user)
+   console.log(user.company)
+   
+    
     const fetchActivities = async () => {
         try {
           const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`)
@@ -22,21 +30,39 @@ const AllActivitiesPage = () => {
         }
       }
 
-      if(isLogin){
-        boolean = true;
+     /* if(isAuthenticated){
+        const fetchUser = async () => {
+          try {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/profile/user`)
+            if (response.ok) {
+              const user = await response.json()
+              console.log(user)
+              setUser(user)
+            }
+          } catch (error) {
+            console.log(error)
+          }
+        }
+        
       }
+      useEffect(() => {
+        fetchUser()
+        
+      }, [])*/
 
-
+      
       useEffect(() => {
         fetchActivities()
+        
       }, [])
       return (
         <div>
             <Navbar/>  
             <div className={classeActivities.outCtn}>
             <p>See your activities</p>
-            {boolean ? <Link to={`/CompanyCreateActivityPage`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
-            
+            {/*isAuthenticated ? <Link to={`/companies/${user.companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>*/}
+            {isAuthenticated ? <Link to={`/companies/${user.company}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+           
             </div>
             <div className={classeActivities.mainCtn}>
           
