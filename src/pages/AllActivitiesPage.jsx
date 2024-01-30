@@ -1,87 +1,100 @@
-import { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar.jsx';
-import classeActivities from '../styles/allActivities.module.css'
-import { AuthContext } from '../contexts/AuthContext'
-
+import classeActivities from '../styles/allActivities.module.css';
+import { AuthContext } from '../contexts/AuthContext';
 
 const AllActivitiesPage = () => {
-    const [activities, setActivities] = useState([])
-    let companyIdAct = '';
-    const { isAuthenticated } = useContext(AuthContext)
-    if(isAuthenticated){
-      const { user } = useContext(AuthContext)
-      const { companyId } = useContext(AuthContext)
-      companyIdAct = companyId;
-    console.log(isAuthenticated)
-   // companyId = user.company
-    console.log(user)
-  //  console.log(user.company)
+ 
+    const [activities, setActivities] = useState([]);
+    const [filteredActivities, setFilteredActivities] = useState([]);
+    const [types, setTypes] = useState([]);
+    const [selectedType, setSelectedType] = useState('');
 
-  }
-    
-   
-    
+
+    const { isAuthenticated } = useContext(AuthContext);
+    let companyId = '';
+    if (isAuthenticated) {
+        const { user } = useContext(AuthContext);
+        companyId = user.company;
+    }
+
     const fetchActivities = async () => {
+      console.log('Fetching activities...');
         try {
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`)
-          if (response.ok) {
-            const activitiesData = await response.json()
-            console.log(activitiesData)
-            setActivities(activitiesData)
-          }
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
+            if (response.ok) {
+                const activitiesData = await response.json();
+                setActivities(activitiesData);
+                setFilteredActivities(activitiesData);
+                fetchFilterOptions(); 
+            }
         } catch (error) {
-          console.log(error)
+            console.log(error);
         }
+    };
+
+    const fetchFilterOptions = async () => {
+      try {
+          // Fetch all activities
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
+          if (response.ok) {
+              const activitiesData = await response.json();
+  
+              // Extract types from activities
+              const distinctTypes = [...new Set(activitiesData.map(activity => activity.type))];
+              setTypes(distinctTypes);
+          }
+      } catch (error) {
+          console.log(error);
       }
-     
-      useEffect(() => {
-        fetchActivities()
-        
-      }, [])
-      return (
+  };
+  
+    useEffect(() => {
+      console.log('Activities:', activities);
+        fetchActivities();
+    }, []);
+
+    const handleFilter = () => {
+        let filtered = activities;
+
+        if (selectedType) {
+            filtered = filtered.filter(activity => activity.type === selectedType);
+        }
+
+        setFilteredActivities(filtered);
+    };
+
+    return (
         <div>
-            <Navbar/>  
+            <Navbar />
             <div className={classeActivities.outCtn}>
-            <p>See your activities</p>
-           
-            {isAuthenticated ? <Link to={`/companies/${companyIdAct}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
-           
+                <p>See your activities</p>
+                {isAuthenticated ? <Link to={`/companies/${companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+                <div>
+                    <select value={selectedType} onChange={e => setSelectedType(e.target.value)}>
+                        <option value="">All Types</option>
+                        {types.map(type => (
+                            <option key={type} value={type}>{type}</option>
+                        ))}
+                    </select>
+                    <button onClick={handleFilter}>Apply Filter</button>
+                </div>
             </div>
             <div className={classeActivities.mainCtn}>
-          
-    
-            {activities.map(activity => (
-                <div className={classeActivities.activity} key={activity._id}>
-            <div className={classeActivities.item} >
-            
-              {isAuthenticated ? <Link to={`/companies/${companyIdAct}/${activity._id}`}>
-                <p className={classeActivities.text}>{activity.type}</p>
-                  {<img src={activity.image}  />}
-                </Link>      
-              : <Link to={`/activityDetails/${activity._id}`}>
-                <p className={classeActivities.text}>{activity.type}</p>
-                  
-                  {<img src={activity.image}  />}
-                </Link>}
-                {/*
-                <Link to={`/activityDetails/${activity._id}`}>
-                <p className={classeActivities.text}>{activity.type}</p>
-                  
-                  {<img src={activity.image}  />}
-            </Link>*/}
-              
+                {filteredActivities.map(activity => (
+                    <div className={classeActivities.activity} key={activity._id}>
+                        <div className={classeActivities.item}>
+                            <Link to={`/activityDetails/${activity._id}`}>
+                                <p className={classeActivities.text}>{activity.type}</p>
+                                <img src={activity.image} alt={activity.type} />
+                            </Link>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
-            ))}
-          
-          </div>
-        </div>
-      )
-    
-}
+    );
+};
 
-
-
-
-export default AllActivitiesPage
+export default AllActivitiesPage;
