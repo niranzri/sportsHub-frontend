@@ -30,7 +30,7 @@ const handleSubmit = async (event) => {
             const user = parsed.user;
             saveToken(parsed.authToken)
             console.log({message: "user id", userId: user.userId})
-            navigate(`/${user.userId}`)
+            navigate(`/profile`)
             //navigate(`/companies/${company_.id}`) // Navigate to company profile page 
           }
 
