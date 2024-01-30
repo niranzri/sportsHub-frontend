@@ -52,12 +52,22 @@ const AllActivitiesPage = () => {
             {activities.map(activity => (
                 <div className={classeActivities.activity} key={activity._id}>
             <div className={classeActivities.item} >
-              
+            
+              {isAuthenticated ? <Link to={`/companies/${companyId}/${activity._id}`}>
+                <p className={classeActivities.text}>{activity.type}</p>
+                  {<img src={activity.image}  />}
+                </Link>      
+              : <Link to={`/activityDetails/${activity._id}`}>
+                <p className={classeActivities.text}>{activity.type}</p>
+                  
+                  {<img src={activity.image}  />}
+                </Link>}
+                {/*
                 <Link to={`/activityDetails/${activity._id}`}>
                 <p className={classeActivities.text}>{activity.type}</p>
                   
                   {<img src={activity.image}  />}
-                </Link>
+            </Link>*/}
               
             </div>
         </div>

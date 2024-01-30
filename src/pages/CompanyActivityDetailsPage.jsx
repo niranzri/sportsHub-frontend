@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import classes from '../styles/companyActivityDetails.module.css';
+import { AuthContext } from '../contexts/AuthContext'
 
 const CompanyActivityDetailsPage = () => {
   const { activityId } = useParams('');
@@ -8,6 +9,7 @@ const CompanyActivityDetailsPage = () => {
   const [editMode, setEditMode] = useState(false);
   const [editedActivity, setEditedActivity] = useState({});
   const navigate = useNavigate();
+  const { fetchWithToken } = useContext(AuthContext)
 
   const fetchActivity = async () => {
     try {
@@ -30,7 +32,7 @@ const CompanyActivityDetailsPage = () => {
 
   const handleDelete = async () => {
     try {
-      const response = await fetchWithToken(`activities/${activityId}`, 'DELETE');
+      const response = await fetchWithToken(`/activities/${activityId}`, 'DELETE');
       if (response.status === 204) {
         navigate('/');
       }
