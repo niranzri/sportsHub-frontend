@@ -47,7 +47,6 @@ const AuthContextProvider = ({ children }) => {
        let userId = userData._id
        setCompanyId(userData.company)
        console.log(userData.company)
-      // companyId = user.company
         console.log(userId)
 
         
@@ -89,7 +88,7 @@ const AuthContextProvider = ({ children }) => {
  
 
   return (
-    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, user , companyId }}>
+    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, verifyToken, user , companyId }}>
       {children}
     </AuthContext.Provider>
   )
