@@ -4,17 +4,20 @@ import Navbar from '../components/Navbar.jsx';
 import classeActivities from '../styles/allActivities.module.css'
 import { AuthContext } from '../contexts/AuthContext'
 
-let boolean = false;
 
 const AllActivitiesPage = () => {
     const [activities, setActivities] = useState([])
-   // const [user, setUser] = useState('')
+    let companyId = '';
     const { isAuthenticated } = useContext(AuthContext)
-    const { user } = useContext(AuthContext)
+    if(isAuthenticated){
+      const { user } = useContext(AuthContext)
     console.log(isAuthenticated)
-
+    companyId = user.company
     console.log(user)
-   console.log(user.company)
+    console.log(user.company)
+
+  }
+    
    
     
     const fetchActivities = async () => {
@@ -29,28 +32,7 @@ const AllActivitiesPage = () => {
           console.log(error)
         }
       }
-
-     /* if(isAuthenticated){
-        const fetchUser = async () => {
-          try {
-            const response = await fetch(`${import.meta.env.VITE_API_URL}/profile/user`)
-            if (response.ok) {
-              const user = await response.json()
-              console.log(user)
-              setUser(user)
-            }
-          } catch (error) {
-            console.log(error)
-          }
-        }
-        
-      }
-      useEffect(() => {
-        fetchUser()
-        
-      }, [])*/
-
-      
+     
       useEffect(() => {
         fetchActivities()
         
@@ -60,8 +42,8 @@ const AllActivitiesPage = () => {
             <Navbar/>  
             <div className={classeActivities.outCtn}>
             <p>See your activities</p>
-            {/*isAuthenticated ? <Link to={`/companies/${user.companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>*/}
-            {isAuthenticated ? <Link to={`/companies/${user.company}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+           
+            {isAuthenticated ? <Link to={`/companies/${companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
            
             </div>
             <div className={classeActivities.mainCtn}>
