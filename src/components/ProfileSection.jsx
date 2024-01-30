@@ -13,8 +13,10 @@ const ProfileSection = () => {
       try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/profile/${user._id}`);
         if (response.ok) {
+         
           const userData = await response.json();
           setUserInfo(userData);
+        
         } else {
           console.log(`Couldn't fetch the user data`);
         }
@@ -22,8 +24,10 @@ const ProfileSection = () => {
         console.log(error);
       }
     };
-
-  fetchUserInfo()}, [user._id]
+    if(user){
+  fetchUserInfo()
+    }
+  }, [user]
   )
 
   console.log(userInfo)

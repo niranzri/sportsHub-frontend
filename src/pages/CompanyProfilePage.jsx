@@ -6,48 +6,49 @@ import { AuthContext } from '../contexts/AuthContext'
 import classeActivities from '../styles/allActivities.module.css'
 
 const CompanyProfilePage = () => {
-    const { isAuthenticated } = useContext(AuthContext)
-    const { verifyToken } = useContext(AuthContext)
+
     let company = '';
     const [activities, setActivities] = useState([])
-    
+
 
     
-    if(isAuthenticated){
+
     const { user } = useContext(AuthContext)
     const { companyId } = useContext(AuthContext)
-
+    company = companyId;
     console.log(user)
 
-if(verifyToken != undefined){
-    company = companyId;
-    const fetchActivities = async () => {
-
-       try {
-            
-          const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities/company/${companyId}`)
-          
-          console.log(response)
-          if (response.ok) {
-            const activitiesData = await response.json()
- 
-            console.log(activitiesData)
-            setActivities(activitiesData)
-            console.log(activitiesData[0].image)
-            console.log(activitiesData[0].type)
-          }
-        } catch (error) {
-          console.log(error)
-        }
-      }
     
       useEffect(() => {
-        fetchActivities()
+      
+           
+        const fetchActivities = async () => {
 
-      }, [])
+            try {
+                 
+               const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities/company/${company}`)
+               
+               console.log(response)
+               if (response.ok) {
+                 const activitiesData = await response.json()
+      
+                 console.log(activitiesData)
+                 setActivities(activitiesData)
+                 console.log(activitiesData[0].image)
+                 console.log(activitiesData[0].type)
+               }
+             } catch (error) {
+               console.log(error)
+             }
+           }
+
+
+        fetchActivities()
+        
+      }, [company])
     
-    }
-}
+
+
 
     return (
         <div className={classes.pageCtn}>
@@ -74,7 +75,7 @@ if(verifyToken != undefined){
             </div>
         </div>
     );
-}
+              }
  
 export default CompanyProfilePage;
 
