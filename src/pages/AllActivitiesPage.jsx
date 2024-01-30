@@ -7,14 +7,16 @@ import { AuthContext } from '../contexts/AuthContext'
 
 const AllActivitiesPage = () => {
     const [activities, setActivities] = useState([])
-    let companyId = '';
+    let companyIdAct = '';
     const { isAuthenticated } = useContext(AuthContext)
     if(isAuthenticated){
       const { user } = useContext(AuthContext)
+      const { companyId } = useContext(AuthContext)
+      companyIdAct = companyId;
     console.log(isAuthenticated)
-    companyId = user.company
+   // companyId = user.company
     console.log(user)
-    console.log(user.company)
+  //  console.log(user.company)
 
   }
     
@@ -43,7 +45,7 @@ const AllActivitiesPage = () => {
             <div className={classeActivities.outCtn}>
             <p>See your activities</p>
            
-            {isAuthenticated ? <Link to={`/companies/${companyId}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
+            {isAuthenticated ? <Link to={`/companies/${companyIdAct}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
            
             </div>
             <div className={classeActivities.mainCtn}>
@@ -53,7 +55,7 @@ const AllActivitiesPage = () => {
                 <div className={classeActivities.activity} key={activity._id}>
             <div className={classeActivities.item} >
             
-              {isAuthenticated ? <Link to={`/companies/${companyId}/${activity._id}`}>
+              {isAuthenticated ? <Link to={`/companies/${companyIdAct}/${activity._id}`}>
                 <p className={classeActivities.text}>{activity.type}</p>
                   {<img src={activity.image}  />}
                 </Link>      

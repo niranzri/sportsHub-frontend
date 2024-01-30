@@ -8,6 +8,7 @@ const AuthContextProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
 
   const [user, setUser] = useState()
+  const [companyId, setCompanyId] = useState()
 
 
 
@@ -44,6 +45,9 @@ const AuthContextProvider = ({ children }) => {
         setUser(userData);
         console.log(userData)
        let userId = userData._id
+       setCompanyId(userData.company)
+       console.log(userData.company)
+      // companyId = user.company
         console.log(userId)
 
         
@@ -85,7 +89,7 @@ const AuthContextProvider = ({ children }) => {
  
 
   return (
-    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, user }}>
+    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, user , companyId }}>
       {children}
     </AuthContext.Provider>
   )
@@ -93,25 +97,3 @@ const AuthContextProvider = ({ children }) => {
 
 export default AuthContextProvider
 
-
-
-
-
-
-
-/* import { createContext } from "react";
-
-
-export const AuthContext=createContext ()
-
-const AuthContextProvider = () => {
-
-    return ( 
-
-        <>
-        </> 
-    
-    );
-}
- 
-export default AuthContextProvider; */
