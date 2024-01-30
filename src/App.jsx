@@ -9,6 +9,7 @@ import AllActivitiesPage from './pages/AllActivitiesPage.jsx'
 import PersonProfilePage from './pages/PersonProfilePage'
 import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
+import PrivateRoute from './components/PrivateRoute'
 import ErrorPage from './pages/ErrorPage.jsx'
 import ActivityDetailsPage from './pages/ActivityDetailsPage.jsx'
 import './App.css'
@@ -22,9 +23,9 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
-        <Route path='/:userId' element={<CompanyProfilePage />} />
-        <Route path='/companies/:companyId/:activityId' element={<CompanyActivityDetailsPage />} />
-        <Route path='/companies/:companyId/createActivity' element={<CompanyCreateActivityPage />} /> 
+        <Route path='/:userId' element={<PrivateRoute> <CompanyProfilePage /></PrivateRoute>} />
+        <Route path='/companies/:companyId/:activityId' element={<PrivateRoute> <CompanyActivityDetailsPage /> </PrivateRoute>} />
+        <Route path='/companies/:companyId/createActivity' element={ <PrivateRoute> <CompanyCreateActivityPage/> </PrivateRoute>} /> 
         <Route path='/allActivities' element={<AllActivitiesPage />} />
         <Route path='/activityDetails/:activityId' element={<ActivityDetailsPage />} />
         <Route path='*' element={<ErrorPage />} />
