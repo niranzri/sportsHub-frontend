@@ -19,6 +19,8 @@ const AllActivitiesPage = () => {
                 const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities`);
                 if (response.ok) {
                     const activitiesData = await response.json();
+                    console.log(activitiesData)
+                    console.log(activitiesData[0].company.city)
                     setActivities(activitiesData);
                     setFilteredActivities(activitiesData);
                     fetchFilterOptions(); 
@@ -57,6 +59,7 @@ const AllActivitiesPage = () => {
 
         if (selectedType) {
             filtered = filtered.filter(activity => activity.type === selectedType);
+            
         }
 
         setFilteredActivities(filtered);
@@ -83,7 +86,8 @@ const AllActivitiesPage = () => {
                     <div className={classeActivities.activity} key={activity._id}>
                         <div className={classeActivities.item}>
                             <Link to={`/activityDetails/${activity._id}`}>
-                                <p className={classeActivities.text}>{activity.type}</p>
+                                <p className={classeActivities.text}>{activity.type}, {!activity.company ? (<></>): (activity.company.city) } </p>
+                                
                                 <img src={activity.image} alt={activity.type} />
                             </Link>
                         </div>
