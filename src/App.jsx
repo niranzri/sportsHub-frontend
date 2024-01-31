@@ -7,6 +7,7 @@ import CompanyActivityDetailsPage from './pages/CompanyActivityDetailsPage'
 import CompanyCreateActivityPage from './pages/CompanyCreateActivityPage.jsx'
 import AllActivitiesPage from './pages/AllActivitiesPage.jsx'
 import Navbar from './components/Navbar'
+import Footer from './components/Footer'
 import PrivateRoute from './components/PrivateRoute'
 import ErrorPage from './pages/ErrorPage.jsx'
 import ActivityDetailsPage from './pages/ActivityDetailsPage.jsx'
@@ -28,6 +29,7 @@ function App() {
         <Route path='/activityDetails/:activityId' element={<ActivityDetailsPage />} />
         <Route path='*' element={<ErrorPage />} />
       </Routes>
+      <Footer />
     </>
   )
 }
