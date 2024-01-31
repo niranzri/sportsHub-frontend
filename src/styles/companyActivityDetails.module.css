@@ -8,6 +8,7 @@
   .textCtn {
       color: black;
       width: 700px;
+      gap:10px;
     }
   
     .textCtn > p {
@@ -26,8 +27,7 @@
       width: 100%;
       height: 30px;
       padding: 0;
-     margin: 0;
-     box-sizing: border-box;
+      margin-bottom: 20px;
     }
   
     .buttonCtn{

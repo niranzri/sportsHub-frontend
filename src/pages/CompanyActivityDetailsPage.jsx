@@ -87,11 +87,13 @@ const CompanyActivityDetailsPage = () => {
                 type="text"
                 value={editedActivity.type}
                 onChange={(e) => setEditedActivity({ ...editedActivity, type: e.target.value })}
+                className={classes.editInput}
               />
               <input
                 type="text"
                 value={editedActivity.schedule}
                 onChange={(e) => setEditedActivity({ ...editedActivity, schedule: e.target.value })}
+                className={classes.editInput}
               />
             </>
           ) : (
