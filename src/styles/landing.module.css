@@ -36,26 +36,21 @@
   }
   
   .buttonCtn button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 5px;
     padding: 6px 8px;
     border-radius: 16px;
     width: 100px;
-    margin-top: 50px;
     cursor: pointer;
     border: none;
+    color: black;
   }
   
   .bellowHero {
-   /* background-color: rgb(25, 30, 36); */
+    background-color: white;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 50px;
     gap: 20px;
-
   }
 
   .featureSection {
@@ -63,10 +58,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 50px;
-    height: 300px;
+    width: 100vw;
+    padding: 100px;
+    height: 500px;
+    /* margin-bottom: 50px;*/
   }
-  
+
+ 
   .imageContainer {
     flex: 1;
     padding-right: 20px;
@@ -77,6 +75,37 @@
     height: auto;
   }
   
+  .mapsContainer {
+    position: relative;
+  }
+  
+  .mapsContainer img {
+    width: 100%;
+    height: auto;
+    padding: 0;
+    filter: grayscale(70%)
+  }
+
+  .infoBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(28, 27, 27, 0.8); 
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    max-width: 50%;
+  }
+
+  .infoBox h1,
+  .infoBox h2,
+  .infoBox p {
+    margin: 0;
+    color: #f2f2f2;
+    margin-bottom: 20px;
+  }
+
   .textContent {
     flex: 1;
     background-color: #f2f2f2; 

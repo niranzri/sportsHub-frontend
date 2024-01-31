@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import classes from '../styles/landing.module.css';
 import sportsImage from '../pictures/lpsports.png'
+import mapsImage from '../pictures/maps.png'
 
 
 const LandingPage = () => {
@@ -39,11 +40,24 @@ const LandingPage = () => {
           <img src={sportsImage} alt="Feature" />
         </div>
         <div className={classes.textContent}>
-          <h2>Feature Title</h2>
-          <p>Access hundreds of sports facilities and fitness classes all in one app</p>
+          <h2>Get Active wherever you want!</h2>
+          <p>Some more text here maybe?</p> 
         </div>
       </div>
+       <div className={classes.mapsContainer}>
+       <img src={mapsImage} alt="Maps" />
+        <div className={classes.infoBox}>
+      <h1>Discover your possibilities</h1>
+      <h2>See all the venues offering your favorite sports and wellness activities. For now only in Berlin, utrecht and Nantes. European-wide coming soon!</h2>
+      <div className={classes.buttonCtn}>
+        <button type='button' onClick={handleExploreClick}>Explore</button>
+      </div>
     </div>
+  </div>
+</div>
+   
+      
+    
   );
 }
 
