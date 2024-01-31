@@ -26,6 +26,7 @@ function App() {
         <Route path='/:userId' element={<PrivateRoute> <CompanyProfilePage /></PrivateRoute>} />
         <Route path='/companies/:companyId/:activityId' element={<PrivateRoute> <CompanyActivityDetailsPage /> </PrivateRoute>} />
         <Route path='/companies/:companyId/createActivity' element={ <PrivateRoute> <CompanyCreateActivityPage/> </PrivateRoute>} /> 
+        <Route path='/profile' element={ <PrivateRoute> <CompanyProfilePage/> </PrivateRoute>} /> 
         <Route path='/allActivities' element={<AllActivitiesPage />} />
         <Route path='/activityDetails/:activityId' element={<ActivityDetailsPage />} />
         <Route path='*' element={<ErrorPage />} />
