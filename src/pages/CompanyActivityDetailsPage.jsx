@@ -64,9 +64,6 @@ const CompanyActivityDetailsPage = () => {
     setEditMode(!editMode);
   };
 
-
-  const isLoggedIn = true;
-
   const renderSchedule = () => {
     if (activity.schedule && activity.schedule.includes('Monday')
       && activity.schedule.includes('Tuesday') && activity.schedule.includes('Wednesday')
@@ -105,7 +102,6 @@ const CompanyActivityDetailsPage = () => {
               <p>{renderSchedule()}</p>
             </>
           )}
-          {isLoggedIn && (
             <div className={classes.buttonCtn}>
               {editMode ? (
                 <button type="button" onClick={handleEditSaveClick} className={classes.saveButton}>
@@ -123,7 +119,6 @@ const CompanyActivityDetailsPage = () => {
                 Back
               </button>
             </div>
-          )}
         </div>
       </div>
     </>
