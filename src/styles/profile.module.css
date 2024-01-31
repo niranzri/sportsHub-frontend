@@ -6,7 +6,7 @@
       flex: 1;
       margin-top: 60px;
       padding: 0px;
-      height: calc(100vh - 60px);
+      height: calc(100vh - 120px);
       overflow-y: auto; /* adds scroll if content overflows */
       width: 100vw;
       box-sizing: border-box;
@@ -15,10 +15,9 @@
   .profileCtn {
     display: flex;
     flex-direction: column;
-    margin-top: 60px;
     flex: 3;
     height: 100vh;
-    border: 1px solid black;
+    border-right: 1px solid black;
     color: black;
     max-width: 400px;
   }
@@ -39,29 +38,28 @@
   }
 
   img {
-    height: 100px;
+    height: 200px;
     width: auto;
     padding: 10px;
   }
 
   .infoCtn {
     text-align: left;
-    padding: 10%;
+    padding: 5% 8%;
+    width: 100%;
   }
 
 
-  .buttonsCtn {
+  .buttonCtn {
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 10%;
-    background-color: red;
   }
 
   .companyButton {
-    padding: 10px;
-    margin: 10px;
+    padding: 5%;
     width: auto;
     height: auto;
     background-color: #738685;
@@ -76,6 +74,20 @@
 
   button:hover {
     background-color: #455150;
+  }
+
+  input {
+    background-color:#738685;
+    font-size: 16px;
+    padding: 2%;
+    width: 100%;
+    margin: 1% 0%;
+    border-radius: 5px;
+  }
+
+  p {
+    width: auto;
+    height: auto;
   }
 
   /* company activities */
@@ -99,5 +111,12 @@
     object-position: 50% 50%;
     cursor: pointer;
     transition: .5s ease-in-out;
+  }
+
+  @media (max-width: 768px) { 
+    .profileCtn {
+      border-right: 0px;
+      border-bottom: 1px solid black;
+    }
   }
       

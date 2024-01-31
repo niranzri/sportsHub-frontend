@@ -4,14 +4,12 @@
     align-items: center;
     background-color: white;
     top: 0;
-    left: 0;
-    right: 0;
     width: 100vw;
     height: 60px;
-    position: fixed;
+    position: absolute;
     border-bottom: 0.5px solid black;
     padding-left: 20px;
-    z-index: 1000; 
+    z-index: 1; 
 }
 
 

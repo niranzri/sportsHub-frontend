@@ -2,13 +2,31 @@
 .mainCtn{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-top: 60px;
+    padding: 0px;
+    height: calc(100vh - 60px);
+    overflow-y: auto; /* adds scroll if content overflows */
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+  .activitiesCtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: top;
+    flex: 7;
+    height: 100vh;
   }
   
   .textCtn {
       color: black;
       width: 700px;
       gap:10px;
+      padding: 5%;
     }
   
     .textCtn > p {
@@ -30,7 +48,7 @@
       margin-bottom: 20px;
     }
   
-    .buttonCtn{
+    .buttonCtn {
       display: flex;
       flex-direction: row;
       justify-content: start;
@@ -75,8 +93,8 @@
     .imageContainer {
       display: flex;
       justify-content: center;
-      align-items: center;
-      top: 50px;
+      align-items: flex-start;
+      padding: 5%;
     }
     
     .imageContainer img {
@@ -86,7 +104,6 @@
       border-radius: 20px;;
       padding: 0;
     }
-  
   
    
   @media (max-width: 768px) { 

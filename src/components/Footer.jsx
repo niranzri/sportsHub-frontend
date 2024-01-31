@@ -2,19 +2,15 @@
 import classes from '../styles/footer.module.css';
 
 const Footer = () => {
-
-
   return (  
-    <div className={classes.mainCtn}>  
-      <p>© 2024 SportHubs</p>
+    <footer className={classes.footer}>  
+      <p className={classes.footerText}>© 2024 SportsHub</p>
       {/*<div>
-      <p>Hristina</p>
-      <p>Noelia</p>
-      <p>Mrine</p>
-  </div>*/}
-     
-         
-      </div>
+        <p>Hristina</p>
+        <p>Noelia</p>
+        <p>Mrine</p>
+      </div>*/} 
+    </footer>
 
   );
 }

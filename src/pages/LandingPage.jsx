@@ -11,7 +11,7 @@ const LandingPage = () => {
   };
 
   return (
-    <>
+    <div className={classes.pageCtn}>
       <div className={classes.hero}>
         <h1>Unleash Your Fitness Potential</h1>
         <p>Access hundreds of sports facilities and fitness classes all in one app.</p>
@@ -43,7 +43,7 @@ const LandingPage = () => {
           <p>Access hundreds of sports facilities and fitness classes all in one app</p>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

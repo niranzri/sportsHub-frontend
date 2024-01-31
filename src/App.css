@@ -1,23 +1,45 @@
- body {
+#root {
   margin: 0px;
   padding: 0px;
-  background-color: white;
   width: 100vw;
   height: 100vh;
 } 
 
-/* #root {
-  margin: 0px;
-  width: 100vw;
-  height: 100vh;
-} */
-
-/*
- #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  text-decoration: none;
+  color: inherit;
 }
-*/
+
+html, body {
+  font-family: 'Roboto', sans-serif;
+  height: 100vh;
+  width: 100vw;
+  background-color: white;
+  box-sizing: border-box;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative; /* needed for absolute positioning within*/
+}
+
+.mainCtn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  height: calc(100vh - 120px);
+  overflow-y: auto; /* adds scroll if content overflows */
+  justify-content: flex-start;
+  align-items: center;
+}
 

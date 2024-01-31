@@ -77,14 +77,12 @@ const ProfileSection = () => {
             <h3> Employee info </h3>
             <p> {userInfo.name} </p>
             <p> {userInfo.email} </p>
+          </div>
+          <div className={classes.infoCtn}>
             <h3> Company info </h3>
               {isEditClicked ? (
               <>
-                <input
-                  type="text"
-                  value={editedCompany.name}
-                  onChange={(event) => setEditedCompany({ ...editedCompany, name: event.target.value })}
-                />
+                <p> {userInfo.company.name} </p>
                 <input
                   type="text"
                   value={editedCompany.address}
@@ -104,24 +102,30 @@ const ProfileSection = () => {
             ) : (
               <>
                 <p> {userInfo.company.name} </p>
-                <p> {userInfo.company.address} {userInfo.company.postcode} {userInfo.company.city} </p>
+                <p> {userInfo.company.address} </p>
+                <p> {userInfo.company.postcode} </p>
+                <p> {userInfo.company.city} </p>
               </>
             )}
           </div>
           {isEditClicked ? (
+            <div className={classes.buttonCtn}>
               <button
                 type='button'
                 onClick={handleEditCompany}
                 className={classes.companyButton}>
                 Save changes
               </button>
+            </div>
             ) : (
+              <div className={classes.buttonCtn}>
               <button
                 type='button'
                 onClick={() => setIsEditClicked(true)}
                 className={classes.companyButton}>
-                Edit company information
+                Edit address
               </button>
+            </div>
             )}
           </>
         )}

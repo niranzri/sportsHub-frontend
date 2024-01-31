@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import classes from '../styles/companyActivityDetails.module.css';
+import classesProfile from '../styles/profile.module.css';
 import { AuthContext } from '../contexts/AuthContext';
 import ProfileSection from '../components/ProfileSection.jsx'
 
@@ -78,52 +79,55 @@ const CompanyActivityDetailsPage = () => {
   return activity ? (
     <>
       <div className={classes.mainCtn}>
-          <ProfileSection />
+        <div className={classesProfile.profileCtn}>
+            <ProfileSection />
+        </div>
+        <div className={classes.activitiesCtn}> 
+          <div className={classes.imageContainer}>
+            <img src={activity.image} alt="Activity Image" />
+          </div>
+          <div className={classes.textCtn}>
+            {editMode ? (
+              <>
+                <input
+                  type="text"
+                  value={editedActivity.type}
+                  onChange={(e) => setEditedActivity({ ...editedActivity, type: e.target.value })}
+                  className={classes.editInput}
+                />
+                <input
+                  type="text"
+                  value={editedActivity.schedule}
+                  onChange={(e) => setEditedActivity({ ...editedActivity, schedule: e.target.value })}
+                  className={classes.editInput}
+                />
+              </>
+            ) : (
+              <>
+                <p>{activity.type}</p>
+                <p>{renderSchedule()}</p>
+              </>
+            )}
+              <div className={classes.buttonCtn}>
+                {editMode ? (
+                  <button type="button" onClick={handleEditSaveClick} className={classes.saveButton}>
+                    Save
+                  </button>
+                ) : (
+                  <button type="button" onClick={handleEditSaveClick} className={classes.editButton}>
+                    Edit
+                  </button>
+                )}
+                <button type="button" onClick={handleDelete} className={classes.deleteButton}>
+                  Delete
+                </button>
+                <button type="button" onClick={handleBackClick} className={classes.backButton}>
+                  Back
+                </button>
+              </div>
+          </div>
+        </div>
       </div>
-    
-        <div className={classes.imageContainer}>
-          <img src={activity.image} alt="Activity Image" />
-        </div>
-        <div className={classes.textCtn}>
-          {editMode ? (
-            <>
-              <input
-                type="text"
-                value={editedActivity.type}
-                onChange={(e) => setEditedActivity({ ...editedActivity, type: e.target.value })}
-                className={classes.editInput}
-              />
-              <input
-                type="text"
-                value={editedActivity.schedule}
-                onChange={(e) => setEditedActivity({ ...editedActivity, schedule: e.target.value })}
-                className={classes.editInput}
-              />
-            </>
-          ) : (
-            <>
-              <p>{activity.type}</p>
-              <p>{renderSchedule()}</p>
-            </>
-          )}
-            <div className={classes.buttonCtn}>
-              {editMode ? (
-                <button type="button" onClick={handleEditSaveClick} className={classes.saveButton}>
-                  Save
-                </button>
-              ) : (
-                <button type="button" onClick={handleEditSaveClick} className={classes.editButton}>
-                  Edit
-                </button>
-              )}
-              <button type="button" onClick={handleDelete} className={classes.deleteButton}>
-                Delete
-              </button>
-              <button type="button" onClick={handleBackClick} className={classes.backButton}>
-                Back
-              </button>
-            </div>
-        </div>
     </>
   ) : (
     <h2>Loading...</h2>

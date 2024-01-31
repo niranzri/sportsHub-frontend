@@ -16,7 +16,7 @@ import './App.css'
 function App() {
 
   return (
-    <>
+    <div className="wrapper">
       <Navbar />
       <Routes>
         <Route path='/' element={<LandingPage />} />
@@ -30,7 +30,7 @@ function App() {
         <Route path='*' element={<ErrorPage />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   )
 }
 
