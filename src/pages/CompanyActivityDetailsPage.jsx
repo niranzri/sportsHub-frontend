@@ -55,12 +55,15 @@ const CompanyActivityDetailsPage = () => {
             'Content-Type': 'application/json',
           },
         });
+        
+        setActivity(editedActivity);
       } catch (error) {
         console.log(error);
       }
     }
     setEditMode(!editMode);
   };
+
 
   const isLoggedIn = true;
 
