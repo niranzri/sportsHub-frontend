@@ -1,8 +1,9 @@
 
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import classesCreate from '../styles/createActivity.module.css'
+import classes from '../styles/form.module.css';
 
 const CompanyCreateActivityPage = () => {
     const { companyId } = useParams();
@@ -10,7 +11,7 @@ const CompanyCreateActivityPage = () => {
     const [schedule, setSchedule] = useState([])
     const [image, setImage] = useState('')
     const { fetchWithToken } = useContext(AuthContext)
-
+    const [comp, setComp] = useState('')
    
      console.log(companyId)
 
@@ -35,16 +36,43 @@ const CompanyCreateActivityPage = () => {
         console.error(error)
       }
     }
+
+    useEffect(() => {
+      
+           
+      const fetchCompany = async () => {
+      
+        try {   
+               const response = await fetch(`${import.meta.env.VITE_API_URL}/api/companies/${companyId}`)
+               console.log(response)
+               if (response.ok) {
+                 const companyData = await response.json()
+                 setComp(companyData)
+               }
+             } catch (error) {
+               console.log(error)
+             }
+           }
+          
+
+           fetchCompany()
+      }, [])
+
+
+
+
     return ( 
         <>
-        <div className={classesCreate.mainCtn}>
-    <h1>Create an activity</h1> 
+       
+    
+    <div className={classes.pageCtn}> 
+    <h1>Create a new activity for {comp.name} </h1> 
     <form
         onSubmit={handleSubmit}
         action='submit'
         style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <label htmlFor='type'>Type:</label>
+        className={classes.form} >
+        <label htmlFor='type'><span> Type: </span></label>
         <input
           type='text'
           id='type'
@@ -52,7 +80,7 @@ const CompanyCreateActivityPage = () => {
           onChange={event => setType(event.target.value)}
         />
 
-        <label htmlFor='schedule'>Schedule:</label>
+        <label htmlFor='schedule'><span> Schedule: </span></label>
         <input
           type='text'
           id='schedule'
@@ -60,24 +88,19 @@ const CompanyCreateActivityPage = () => {
           onChange={event => setSchedule(event.target.value)}
         />
             
-        <label htmlFor='image'>Image:</label>
+        <label htmlFor='image'><span> Image: </span></label>
         <input
           type='text'
           id='image'
           value={image}
           onChange={event => setImage(event.target.value)}
         />
-        {/* <label htmlFor='company'>Company:</label>
-        <input
-          type='text'
-          id='company'
-          value={company}
-          onChange={event => setCompanie(company)}
-    />*/}
+
        
-        <button type='submit'>SUBMIT</button>
+        <button type='submit' className={classes.accessButton}>SUBMIT</button>
       </form>
-    </div>
+      </div>
+   
     </>
     );
 }

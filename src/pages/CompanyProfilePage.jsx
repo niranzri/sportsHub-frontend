@@ -6,12 +6,13 @@ import { AuthContext } from '../contexts/AuthContext'
 
 const CompanyProfilePage = () => {
 
-    let company = '';
+   // let company = '';
     const [activities, setActivities] = useState([])
     
     const { user, companyId } = useContext(AuthContext)
-    company = companyId;
-    console.log(user)
+    
+   const company = user.company;
+    console.log(user.company)
 
 
      useEffect(() => {
