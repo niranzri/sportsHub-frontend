@@ -48,7 +48,10 @@ const ProfileSection = () => {
             'Content-Type': 'application/json',
           },
         });
-        setCompany(editedCompany);
+        setUserInfo((prevUserInfo) => ({
+          ...prevUserInfo,
+          company: { ...prevUserInfo.company, ...editedCompany },
+        }));
 
       } catch (error) {
         console.log("Couldn't edit company, sorry", error);
