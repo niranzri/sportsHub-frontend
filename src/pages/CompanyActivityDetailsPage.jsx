@@ -42,7 +42,7 @@ const CompanyActivityDetailsPage = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/allActivities');
+    navigate(-1);
   };
 
   const handleEditSaveClick = () => {
