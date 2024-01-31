@@ -8,11 +8,14 @@ const CompanyProfilePage = () => {
 
    // let company = '';
     const [activities, setActivities] = useState([])
-    
+    let company= ''
     const { user, companyId } = useContext(AuthContext)
-    
-   const company = user.company;
-    console.log(user.company)
+   
+    if(user){
+       company = user.company;
+      console.log(user.company)
+    }
+   
 
 
      useEffect(() => {
