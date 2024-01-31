@@ -6,8 +6,6 @@ import CompanyProfilePage from './pages/CompanyProfilePage.jsx'
 import CompanyActivityDetailsPage from './pages/CompanyActivityDetailsPage'
 import CompanyCreateActivityPage from './pages/CompanyCreateActivityPage.jsx'
 import AllActivitiesPage from './pages/AllActivitiesPage.jsx'
-import PersonProfilePage from './pages/PersonProfilePage'
-import PersonMyActivitiesPage from './pages/PersonMyActivitiesPage'
 import Navbar from './components/Navbar'
 import PrivateRoute from './components/PrivateRoute'
 import ErrorPage from './pages/ErrorPage.jsx'
@@ -23,9 +21,9 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/login' element={<LoginPage />} />
         <Route path='/signup' element={<SignupPage />} />
+        <Route path='/profile' element={ <PrivateRoute> <CompanyProfilePage/> </PrivateRoute>} /> 
         <Route path='/companies/:companyId/:activityId' element={<PrivateRoute> <CompanyActivityDetailsPage /> </PrivateRoute>} />
         <Route path='/companies/:companyId/createActivity' element={ <PrivateRoute> <CompanyCreateActivityPage/> </PrivateRoute>} /> 
-        <Route path='/profile' element={ <PrivateRoute> <CompanyProfilePage/> </PrivateRoute>} /> 
         <Route path='/allActivities' element={<AllActivitiesPage />} />
         <Route path='/activityDetails/:activityId' element={<ActivityDetailsPage />} />
         <Route path='*' element={<ErrorPage />} />
@@ -36,6 +34,3 @@ function App() {
 
 export default App
 
-        /*
-<Route path='/myProfile' element={<PersonProfilePage />} />
-<Route path='/myActivities' element={<PersonMyActivitiesPage />} />*/

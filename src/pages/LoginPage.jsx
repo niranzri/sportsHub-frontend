@@ -7,12 +7,47 @@ const LoginPage = () => {
 
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
+const [isPasswordValid, setIsPasswordValid] = useState(true);
+const [isEmailValid, setIsEmailValid] = useState(true);
 
 const navigate = useNavigate()
 const { saveToken } = useContext(AuthContext)
 
+const handleEmailChange = (value) => {
+    setEmail(value);
+    // Checks if the password is empty and hides it from display
+    if (value.trim() === '') {
+      setIsEmailValid(true);
+    } else {
+    // Checks the password format and update the state
+      setIsEmailValid(/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value));
+    }
+  }
+
+  const handlePasswordChange = (value) => {
+    setPassword(value);
+    // Checks if the password is empty and hides it from display
+    if (value.trim() === '') {
+      setIsPasswordValid(true);
+    } else {
+    // Checks the password format and update the state
+      setIsPasswordValid(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/.test(value));
+    }
+  }
+
 const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (!isPasswordValid) {
+        console.log("Password does not meet the format requirements");
+        return;
+      }
+  
+    if (!isEmailValid) {
+        console.log("E-mail is not valid");
+        return;
+      }
+
     const credentials = { email, password };
 
     try {
@@ -39,27 +74,36 @@ const handleSubmit = async (event) => {
 
 return (
     <div className={classes.pageCtn}> 
-    <form onSubmit={handleSubmit} className={classes.form}>
-        <label> <span> E-mail: </span>
-            <input 
-                value={email} 
-                onChange={event => setEmail(event.target.value)} 
-                required/>
-        </label>
-        <label> <span> Password: </span>
+        <form onSubmit={handleSubmit} className={classes.form}>
+            <label> <span> E-mail: </span>
                 <input 
-                type="password"
-                value={password} 
-                onChange={event => setPassword(event.target.value)} 
-                required/>
-        </label>
+                    value={email} 
+                    onChange={event => handleEmailChange(event.target.value)} 
+                    required/>
+            </label>
             <div className={classes.notificationCtn}>
-                <div className={classes.notification}>
-                * Please provide a valid e-mail address.
-                </div>
+                {!isEmailValid && (
+                    <div className={classes.notification}>
+                    * Please provide a valid e-mail address.
+                    </div>
+                )}
             </div>
-        <button type='submit' className={classes.accessButton}> Log In </button>
-    </form>
+            <label> <span> Password: </span>
+                    <input 
+                    type="password"
+                    value={password} 
+                    onChange={event => handlePasswordChange(event.target.value)} 
+                    required/>
+            </label>
+            <div className={classes.notificationCtn}>
+                {!isPasswordValid && (
+                    <div className={classes.notification}>
+                    * Password must have at least 6 characters and contain at least one number, one lowercase, and one uppercase letter.
+                    </div>
+                )}
+            </div>
+            <button type='submit' className={classes.accessButton}> Log In </button>
+        </form>
     <p className={classes.text}>Don't have an account yet?</p>
         <Link to={'/signup'}> <span> Sign Up </span> </Link>
     </div>

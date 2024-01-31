@@ -97,16 +97,15 @@ const navigate = useNavigate()
   
       if (postCompanyResponse.status === 201) {
         const newCompanyResponse = await postCompanyResponse.json();
-        // console.log("New company", newCompanyResponse); // defined
 
         setCompany({label: newCompanyResponse.name, value: newCompanyResponse})
         setIsCompanyAdded(true);
         
         const fetchCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies/${newCompanyResponse._id}`);
         const fetchedCompany = await fetchCompanyResponse.json();
-        // console.log("Fetched company", fetchedCompany)
 
-      // Update the state with the fetched company
+
+      // Updates the state with the fetched company
         setCompany({ label: fetchedCompany.name, value: fetchedCompany });
       
       } else {
@@ -117,8 +116,6 @@ const navigate = useNavigate()
     }
     }
   }
-  
-  // console.log("Created company", company); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -128,13 +125,17 @@ const navigate = useNavigate()
       return;
     }
 
+    if (!isEmailValid) {
+      console.log("E-mail is not valid");
+      return;
+    }
+
     if (!isCompanyAdded) {
       console.log("You need to add the company before signing up");
       return;
     }
 
     const credentials = { name, email, password, company};
-    //console.log(credentials) 
 
     try {
         const response = await fetch(`${import.meta.env.VITE_API_URL}/auth/signup`, {
@@ -152,7 +153,6 @@ const navigate = useNavigate()
     }
   };
 
-  // console.log("Updated state", company); 
 
   return (
     <div className={classes.pageCtn}> 
