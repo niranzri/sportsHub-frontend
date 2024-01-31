@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import classes from '../styles/companyActivityDetails.module.css';
 import { AuthContext } from '../contexts/AuthContext';
+import ProfileSection from '../components/ProfileSection.jsx'
 
 const CompanyActivityDetailsPage = () => {
   const { activityId } = useParams('');
@@ -77,6 +78,9 @@ const CompanyActivityDetailsPage = () => {
   return activity ? (
     <>
       <div className={classes.mainCtn}>
+          <ProfileSection />
+      </div>
+    
         <div className={classes.imageContainer}>
           <img src={activity.image} alt="Activity Image" />
         </div>
@@ -120,7 +124,6 @@ const CompanyActivityDetailsPage = () => {
               </button>
             </div>
         </div>
-      </div>
     </>
   ) : (
     <h2>Loading...</h2>

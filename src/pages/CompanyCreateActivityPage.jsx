@@ -3,6 +3,7 @@ import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import classesCreate from '../styles/createActivity.module.css'
+import ProfileSection from '../components/ProfileSection.jsx'
 
 const CompanyCreateActivityPage = () => {
     const { companyId } = useParams();
@@ -64,7 +65,9 @@ const CompanyCreateActivityPage = () => {
         <>
        
     
-    <div className={classesCreate.pageCtn}> 
+    <div className={classesCreate.pageCtn}>
+          <ProfileSection />
+      </div> 
     <div className={classesCreate.hero}>
     <h2>Create a new activity for {comp.name} </h2> 
     
@@ -103,8 +106,7 @@ const CompanyCreateActivityPage = () => {
         <button type='submit' className={classesCreate.accessButton}>SUBMIT</button>
       </form>
       </div>
-      </div>
-   
+  
     </>
     );
 }
