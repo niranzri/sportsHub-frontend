@@ -52,6 +52,7 @@ const navigate = useNavigate()
       setShowCompanyFields(true);
     } else if (value) {
       setShowCompanyFields(false);
+      setIsCompanyAdded(true);
       setCompany(value);
     }
   }
@@ -128,7 +129,7 @@ const navigate = useNavigate()
     }
 
     if (!isCompanyAdded) {
-      console.log("Password does not meet the format requirements");
+      console.log("You need to add the company before signing up");
       return;
     }
 
