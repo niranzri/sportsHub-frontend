@@ -64,17 +64,17 @@ const AllActivitiesPage = () => {
     return (
         <div>
             <Navbar />
+            
             <div className={classeActivities.outCtn}>
-                <p>See your activities</p>
-                {isAuthenticated ? <Link to={`/companies/${user?.company}/createActivity`}>Create an activity</Link> : <Link to={`/login`}>Create an activity</Link>}
-                <div>
-                    <select value={selectedType} onChange={e => setSelectedType(e.target.value)}>
+                <h2>See our activities</h2>
+                <div className={classeActivities.filterContainer}>
+                    <select className={classeActivities.filterSelect} value={selectedType} onChange={e => setSelectedType(e.target.value)}>
                         <option value="">All Types</option>
                         {types.map(type => (
                             <option key={type} value={type}>{type}</option>
                         ))}
                     </select>
-                    <button onClick={handleFilter}>Apply Filter</button>
+                    <button  className={classeActivities.filterButton} onClick={handleFilter}>Apply Filter</button>
                 </div>
             </div>
             <div className={classeActivities.mainCtn}>
