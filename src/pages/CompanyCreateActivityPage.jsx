@@ -3,7 +3,6 @@ import { useContext, useState, useEffect } from 'react'
 import { AuthContext } from '../contexts/AuthContext'
 import { useNavigate, useParams } from 'react-router-dom'
 import classesCreate from '../styles/createActivity.module.css'
-import classes from '../styles/form.module.css';
 
 const CompanyCreateActivityPage = () => {
     const { companyId } = useParams();
@@ -65,39 +64,42 @@ const CompanyCreateActivityPage = () => {
         <>
        
     
-    <div className={classes.pageCtn}> 
-    <h1>Create a new activity for {comp.name} </h1> 
+    <div className={classesCreate.pageCtn}> 
+    <h2>Create a new activity for {comp.name} </h2> 
+    
     <form
         onSubmit={handleSubmit}
         action='submit'
         style={{ display: 'flex', flexDirection: 'column' }}
-        className={classes.form} >
-        <label htmlFor='type'><span> Type: </span></label>
+        className={classesCreate.form} >
+        <label htmlFor='type'><span> Type: </span>
         <input
           type='text'
           id='type'
           value={type}
           onChange={event => setType(event.target.value)}
-        />
+        /></label>
 
-        <label htmlFor='schedule'><span> Schedule: </span></label>
+        <label htmlFor='schedule'><span> Schedule: </span>
         <input
           type='text'
           id='schedule'
           value={schedule}
           onChange={event => setSchedule(event.target.value)}
         />
+        </label>
             
-        <label htmlFor='image'><span> Image: </span></label>
+        <label htmlFor='image'><span> Image: </span>
         <input
           type='text'
           id='image'
           value={image}
           onChange={event => setImage(event.target.value)}
         />
+        </label>
 
        
-        <button type='submit' className={classes.accessButton}>SUBMIT</button>
+        <button type='submit' className={classesCreate.accessButton}>SUBMIT</button>
       </form>
       </div>
    
