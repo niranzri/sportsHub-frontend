@@ -65,6 +65,7 @@ const CompanyCreateActivityPage = () => {
        
     
     <div className={classesCreate.pageCtn}> 
+    <div className={classesCreate.hero}>
     <h2>Create a new activity for {comp.name} </h2> 
     
     <form
@@ -101,6 +102,7 @@ const CompanyCreateActivityPage = () => {
        
         <button type='submit' className={classesCreate.accessButton}>SUBMIT</button>
       </form>
+      </div>
       </div>
    
     </>
