@@ -47,28 +47,29 @@
       margin-top: 50px;
       cursor: pointer;
     }
-    .deleteButton {
+    
+    .deleteButton  {
       border: 1px solid grey;
       background-color: transparent;
-      color: aliceblue;
+      color: black;
     }
   
     .editButton {
       border: 1px solid grey;
       background-color: transparent;
-      color: aliceblue;
+      color: black;
     }
   
     .saveButton {
-      border: 1px solid aqua;
-      background-color: transparent;
+      border: 1px solid rgb(78, 76, 76);
+      background-color: grey;
       color: aliceblue;
     }
   
     .backButton {
-      border: 1px solid aqua;
-      background-color:aqua;
-   
+      border: 1px solid grey;
+      background-color: transparent;
+      color: black;
     }
   
     .imageContainer {
@@ -82,6 +83,8 @@
       max-width: 350px;
       height: 350px;
       object-fit: cover; 
+      border-radius: 20px;;
+      padding: 0;
     }
   
   

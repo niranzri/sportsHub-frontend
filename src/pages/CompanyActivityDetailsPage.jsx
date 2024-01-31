@@ -42,7 +42,7 @@ const CompanyActivityDetailsPage = () => {
   };
 
   const handleBackClick = () => {
-    navigate('/allActivities');
+    navigate(-1);
   };
 
   const handleEditSaveClick = async () => {
@@ -108,18 +108,18 @@ const CompanyActivityDetailsPage = () => {
           {isLoggedIn && (
             <div className={classes.buttonCtn}>
               {editMode ? (
-                <button type="button" onClick={handleEditSaveClick}>
+                <button type="button" onClick={handleEditSaveClick} className={classes.saveButton}>
                   Save
                 </button>
               ) : (
-                <button type="button" onClick={handleEditSaveClick}>
+                <button type="button" onClick={handleEditSaveClick} className={classes.editButton}>
                   Edit
                 </button>
               )}
-              <button type="button" onClick={handleDelete}>
+              <button type="button" onClick={handleDelete} className={classes.deleteButton}>
                 Delete
               </button>
-              <button type="button" onClick={handleBackClick}>
+              <button type="button" onClick={handleBackClick} className={classes.backButton}>
                 Back
               </button>
             </div>
