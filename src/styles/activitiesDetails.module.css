@@ -9,7 +9,7 @@
       width: 700px;
     }
   
-    .textCtn > p {
+    .textCtn > p, h2 {
       display: flex;
       flex-direction: row;
       justify-content: flex-start;

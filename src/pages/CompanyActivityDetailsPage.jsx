@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState, useContext } from 'react';
 import classes from '../styles/companyActivityDetails.module.css';
-import { AuthContext } from '../contexts/AuthContext'
+import { AuthContext } from '../contexts/AuthContext';
 
 const CompanyActivityDetailsPage = () => {
   const { activityId } = useParams('');
@@ -9,7 +9,7 @@ const CompanyActivityDetailsPage = () => {
   const [editMode, setEditMode] = useState(false);
   const [editedActivity, setEditedActivity] = useState({});
   const navigate = useNavigate();
-  const { fetchWithToken } = useContext(AuthContext)
+  const { fetchWithToken } = useContext(AuthContext);
 
   const fetchActivity = async () => {
     try {
@@ -17,7 +17,7 @@ const CompanyActivityDetailsPage = () => {
       if (response.ok) {
         const activityData = await response.json();
         setActivity(activityData);
-        setEditedActivity(activityData); 
+        setEditedActivity(activityData);
       } else {
         console.log('Something went wrong');
       }
@@ -42,24 +42,37 @@ const CompanyActivityDetailsPage = () => {
   };
 
   const handleBackClick = () => {
-    navigate(-1);
+    navigate('/allActivities');
   };
 
-  const handleEditSaveClick = () => {
+  const handleEditSaveClick = async () => {
     if (editMode) {
-      fetch(`${import.meta.env.VITE_API_URL}/api/activities/${activityId}`, {
-       method: 'PUT',
-        body: JSON.stringify(editedActivity),
-        headers: {
-        'Content-Type': 'application/json',
-       },
-      });
+      try {
+        await fetch(`${import.meta.env.VITE_API_URL}/api/activities/${activityId}`, {
+          method: 'PUT',
+          body: JSON.stringify(editedActivity),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+      } catch (error) {
+        console.log(error);
+      }
     }
-    setEditMode(!editMode); 
+    setEditMode(!editMode);
   };
 
   const isLoggedIn = true;
-  console.log(isLoggedIn) 
+
+  const renderSchedule = () => {
+    if (activity.schedule && activity.schedule.includes('Monday')
+      && activity.schedule.includes('Tuesday') && activity.schedule.includes('Wednesday')
+      && activity.schedule.includes('Thursday') && activity.schedule.includes('Friday')
+      && activity.schedule.includes('Saturday') && activity.schedule.includes('Sunday')) {
+      return 'Every day from Monday to Sunday';
+    }
+    return activity.schedule?.join(', ');
+  };
 
   return activity ? (
     <>
@@ -75,17 +88,16 @@ const CompanyActivityDetailsPage = () => {
                 value={editedActivity.type}
                 onChange={(e) => setEditedActivity({ ...editedActivity, type: e.target.value })}
               />
-                <input
+              <input
                 type="text"
                 value={editedActivity.schedule}
-                onChange={(e) => setEditedActivity({ ...editedActivity, type: e.target.value })}
+                onChange={(e) => setEditedActivity({ ...editedActivity, schedule: e.target.value })}
               />
-              {/* Add other editable fields like company info, location etc */}
             </>
           ) : (
             <>
               <p>{activity.type}</p>
-              <p>{activity.schedule?.join(', ')}</p>
+              <p>{renderSchedule()}</p>
             </>
           )}
           {isLoggedIn && (
@@ -116,3 +128,8 @@ const CompanyActivityDetailsPage = () => {
 };
 
 export default CompanyActivityDetailsPage;
+
+
+
+
+

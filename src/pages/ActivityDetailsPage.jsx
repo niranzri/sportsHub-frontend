@@ -1,36 +1,45 @@
-import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react'
-import classes from '../styles/activitiesDetails.module.css'
-
+import { useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import classes from '../styles/activitiesDetails.module.css';
 
 const ActivityDetailsPage = () => {
-    
   const { activityId } = useParams('');
   const [activity, setActivity] = useState({});
-  const navigate = useNavigate()
+  const [company, setCompany] = useState({});
+  const navigate = useNavigate();
 
- 
-    const fetchActivity = async () => {
+  useEffect(() => {
+    const fetchActivityAndCompany = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities/${activityId}`)
-        if (response.ok) {
-          const activityData = await response.json()
-          setActivity(activityData)
-        } else {
-          console.log('Something went wrong')
+        const activityResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/activities/${activityId}`);
+        if (!activityResponse.ok) {
+          throw new Error('Failed to fetch activity');
         }
-      } catch (error) {
-        console.log(error)
-      }
-    }
+        const activityData = await activityResponse.json();
+        setActivity(activityData);
 
-    useEffect(() => { fetchActivity()
-  }, [activityId])
+        setCompany(activityData.company);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchActivityAndCompany();
+  }, [activityId]);
 
   const handleBackClick = () => {
-    navigate('/allActivities'); 
+    navigate('/allActivities');
   };
 
+  const renderSchedule = () => {
+    if (activity.schedule && activity.schedule.includes('Monday')
+      && activity.schedule.includes('Tuesday') && activity.schedule.includes('Wednesday')
+      && activity.schedule.includes('Thursday') && activity.schedule.includes('Friday')
+      && activity.schedule.includes('Saturday') && activity.schedule.includes('Sunday')) {
+      return 'Every day from Monday to Sunday';
+    }
+    return activity.schedule?.join(', ');
+  };
 
   return (
     <>
@@ -39,8 +48,13 @@ const ActivityDetailsPage = () => {
           <img src={activity.image} alt="Activity Image" />
         </div>
         <div className={classes.textCtn}>
-          <p>{activity.type}</p>
-          <p>{activity.schedule?.join(', ')}</p>
+          <h2>{activity.type}</h2>
+          <p>{renderSchedule()}</p>
+          <div className={classes.textCtn}>
+            <p>Company: {company.name}</p>
+            <p>City: {company.city}</p>
+            <p>Address: {company.address}</p>
+          </div>
           <div className={classes.buttonCtn}>
             <button type='button' onClick={handleBackClick}>
               Back
@@ -49,28 +63,7 @@ const ActivityDetailsPage = () => {
         </div>
       </div>
     </>
-  )
-}
+  );
+};
 
- export default ActivityDetailsPage;
-
-/* return (
-    <div>
-      <Navbar />
-      <div className={classesArtDetailsStyle.mainCtn}>
-       <div className={classesArtDetailsStyle.imageContainer}>
-         <img
-           src={art.img}
-            alt={art.alt_text}
-         />
-       </div>
-      <div className={classesArtDetailsStyle.textCtn}>
-        <p>
-          <span className={classesArtDetailsStyle.label}>Title:</span>{' '}
-          {isEditing ? (
-            <input
-              type="text"
-              value={art.title}
-              onChange={(e) => onChangeHandler('title', e.target.value)}
-              className={classesArtDetailsStyle.editInput}
-            /> */
+export default ActivityDetailsPage;
