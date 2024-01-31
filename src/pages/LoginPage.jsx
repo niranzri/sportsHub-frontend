@@ -7,7 +7,6 @@ const LoginPage = () => {
 
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
-const [isRightCredentials, setIsRightCredentials] = useState(true);
 
 const navigate = useNavigate()
 const { saveToken } = useContext(AuthContext)
@@ -31,12 +30,10 @@ const handleSubmit = async (event) => {
             saveToken(parsed.authToken)
             console.log({message: "user id", userId: user.userId})
             navigate(`/profile`)
-            //navigate(`/companies/${company_.id}`) // Navigate to company profile page 
           }
 
     } catch (error) {
         console.log(error);
-        setIsRightCredentials(false);
     }
 };
 
@@ -56,13 +53,11 @@ return (
                 onChange={event => setPassword(event.target.value)} 
                 required/>
         </label>
-        {!isRightCredentials && (
             <div className={classes.notificationCtn}>
                 <div className={classes.notification}>
                 * Please provide a valid e-mail address.
                 </div>
             </div>
-          )}
         <button type='submit' className={classes.accessButton}> Log In </button>
     </form>
     <p className={classes.text}>Don't have an account yet?</p>
