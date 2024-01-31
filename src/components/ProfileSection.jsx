@@ -1,38 +1,35 @@
 import { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
 import { AuthContext } from '../contexts/AuthContext'
 import classes from '../styles/profile.module.css';
 
 const ProfileSection = () => {
   const { user } = useContext(AuthContext)
-  //const { userId } = useParams();
-  const [userInfo, setUserInfo] = useState([]);
+  const [userInfo, setUserInfo] = useState();
   
   useEffect (() => {
     const fetchUserInfo = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_API_URL}/profile/${user._id}`);
-        if (response.ok) {
-         
-          const userData = await response.json();
-          setUserInfo(userData);
-        
-        } else {
-          console.log(`Couldn't fetch the user data`);
+      if (user) {
+        try {
+          const response = await fetch(`${import.meta.env.VITE_API_URL}/profile/${user._id}`);
+          if (response.ok) {
+          
+            const userData = await response.json();
+            setUserInfo(userData);
+          
+          } else {
+            console.log(`Couldn't fetch the user data`);
+          }
+        } catch (error) {
+          console.log(error);
         }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    if(user){
+     };
+   }
   fetchUserInfo()
-    }
-  }, [user]
-  )
+  }, [user])
 
   console.log(userInfo)
 
-  if (userInfo.length === 0) {
+  if (!userInfo) {
     return <div>Loading...</div>;
   }
 

@@ -9,9 +9,7 @@ const CompanyProfilePage = () => {
     let company = '';
     const [activities, setActivities] = useState([])
     
-
-    const { user } = useContext(AuthContext)
-    const { companyId } = useContext(AuthContext)
+    const { user, companyId } = useContext(AuthContext)
     company = companyId;
     console.log(user)
 
@@ -19,12 +17,10 @@ const CompanyProfilePage = () => {
      useEffect(() => {
       
            
-        const fetchActivities = async () => {
-
-            try {
-                 
+      const fetchActivities = async () => {
+      if (user) {
+        try {   
                const response = await fetch(`${import.meta.env.VITE_API_URL}/api/activities/company/${company}`)
-               
                console.log(response)
                if (response.ok) {
                  const activitiesData = await response.json()
@@ -34,13 +30,10 @@ const CompanyProfilePage = () => {
                console.log(error)
              }
            }
-
+          }
 
         fetchActivities()
-        
       }, [company])
-    
-
 
 
     return (

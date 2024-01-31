@@ -25,6 +25,7 @@ const AuthContextProvider = ({ children }) => {
     setToken()
     setIsAuthenticated(false)
     window.localStorage.removeItem('authToken')
+    setUser(null);
     navigate('/')
   }
 
@@ -88,7 +89,7 @@ const AuthContextProvider = ({ children }) => {
  
 
   return (
-    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, verifyToken, user , companyId }}>
+    <AuthContext.Provider value={{ isLoading, isAuthenticated, saveToken, logout, fetchWithToken, verifyToken, setUser, user, companyId }}>
       {children}
     </AuthContext.Provider>
   )

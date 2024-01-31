@@ -11,7 +11,7 @@ const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
 
 const navigate = useNavigate()
-const { saveToken } = useContext(AuthContext)
+const { saveToken, setUser } = useContext(AuthContext)
 
 const handleEmailChange = (value) => {
     setEmail(value);
@@ -62,6 +62,7 @@ const handleSubmit = async (event) => {
             const parsed = await response.json()
             console.log(parsed)
             const user = parsed.user;
+            setUser(user);
             saveToken(parsed.authToken)
             console.log({message: "user id", userId: user.userId})
             navigate(`/profile`)
