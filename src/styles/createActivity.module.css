@@ -116,6 +116,7 @@ h2 {
     flex-wrap: nowrap;
     gap: 10px;
   }
+  
 .notificationCtn {
     margin-bottom: 10px;
     display: flex;
@@ -140,13 +141,17 @@ h2 {
     margin: 10px;
     width: 100px;
     height: 35px;
-    background-color: #738685;
-    color: white;
+    background-color: rgb(197, 202, 204);
     border: none;
     border-radius: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-family: 'Roboto', sans-serif;
     box-sizing: none;
+  }
+
+  .accessButton:hover {
+    background-color: rgb(114, 116, 117);
+    color:white;
   }
 

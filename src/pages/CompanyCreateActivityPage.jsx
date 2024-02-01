@@ -95,7 +95,7 @@ const CompanyCreateActivityPage = () => {
               />
               </label>
 
-              <button type='submit' className={classesCreate.accessButton}>SUBMIT</button>
+              <button type='submit' className={classesCreate.accessButton}> Submit </button>
           </form>
         </div>
       </div>

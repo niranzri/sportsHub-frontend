@@ -77,8 +77,7 @@ const CompanyActivityDetailsPage = () => {
   };
 
   return activity ? (
-    <>
-      <div className={classes.mainCtn}>
+      <div className={classesProfile.pageCtn}>
         <div className={classesProfile.profileCtn}>
             <ProfileSection />
         </div>
@@ -128,7 +127,6 @@ const CompanyActivityDetailsPage = () => {
           </div>
         </div>
       </div>
-    </>
   ) : (
     <h2>Loading...</h2>
   );
