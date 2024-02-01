@@ -4,7 +4,7 @@ import classes from '../styles/profile.module.css';
 
 
 const ProfileSection = () => {
-  const { user, fetchWithToken, logout } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [userInfo, setUserInfo] = useState();
   // variables edit and delete buttons
   const [editedCompany, setEditedCompany] = useState({});
@@ -74,7 +74,6 @@ const ProfileSection = () => {
     };
     */
 
-
   if (!userInfo) {
     return <div> Loading...</div>;
   }
@@ -87,7 +86,7 @@ const ProfileSection = () => {
             <img src={userInfo.company.image} alt="Company image" className={classes.imageGym}/>
           </div>
           <div className={classes.infoCtn}>
-            <h3> Employee info </h3>
+            <h3 className> Employee info </h3>
             <p> {userInfo.name} </p>
             <p> {userInfo.email} </p>
           </div>

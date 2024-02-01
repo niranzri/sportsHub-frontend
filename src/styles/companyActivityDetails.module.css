@@ -18,8 +18,9 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: top;
-    flex: 7;
+    flex: 6;
     height: 100vh;
+    background-color: rgb(237, 238, 238);
   }
   
   .textCtn {

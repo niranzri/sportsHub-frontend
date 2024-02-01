@@ -4,6 +4,7 @@ import classes from '../styles/profilePage.module.css';
 import ProfileSection from '../components/ProfileSection.jsx'
 import { AuthContext } from '../contexts/AuthContext'
 
+
 const CompanyProfilePage = () => {
 
   const [activities, setActivities] = useState([])
@@ -37,31 +38,31 @@ const CompanyProfilePage = () => {
 
   return (    
     <div className={classes.pageCtn}>
-            <div className={classes.profileCtn}>
-                <ProfileSection />
-            </div>
-
-            <div className={classes.mainCtn}>
-                <h1>All the activities of your company</h1>
-                
-                <button type='button'>
+        <div className={classes.profileCtn}>
+          <ProfileSection />
+        </div>
+            
+        <div className={classes.activitiesCtn}>
+            <h1>All the activities of your company</h1>
+            <div className={classes.buttonCtn}>
+              <button type='button' className={classes.companyButton}>
                 <Link to={`/companies/${user?.company}/createActivity`}>Add an activity</Link>
             </button>
+            </div>
                 
-                <div className={classes.activitiesCtn}>
-                {activities.map(activity => (
-                 <div className={classes.activity} key={activity._id}>
+            <div className={classes.mainCtn}>
+              {activities.map(activity => (
+                <div className={classes.activity} key={activity._id}>
                     <div className={classes.item} >
                           {<Link to={`/companies/${companyId}/${activity._id}`}>
                                  <p className={classes.text}>{activity.type}</p>
                                  {<img src={activity.image} alt={activity.type} />}
                           </Link> }     
-                     </div>
-
-                 </div> 
-                 ))}
-                 </div>
-              </div>
+                    </div>
+                </div> 
+                ))}
+            </div>
+        </div>
     </div>
 
   );

@@ -1,28 +1,46 @@
 .pageCtn {
     display: flex;
     flex-direction: row;
- /*   justify-content: center;*/
- /*   align-items: center; */
     flex: 1;
     margin-top: 60px;
     padding: 0px;
-    height: calc(100vh - 120px);
-    overflow-y: auto; /* adds scroll if content overflows */
+    overflow-y: auto; 
     width: 100vw;
     box-sizing: border-box;
+    background-color: rgb(237, 238, 238);
   }
 
 .profileCtn {
   display: flex;
   flex-direction: column;
-  flex: 3;
+  flex: 4;
   height: 100vh;
-  border-right: 1px solid black;
+  //border-right: 1px solid black;
   color: black;
   max-width: 400px;
+  background-color: white;
+}
+
+.activitiesCtn {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  align-items:center;
+  flex: 6;
+  height: 100vh;
+  padding: 2%;
 }
 
 
+.activitiesCtn h1 {
+  margin: 20px 0px;
+}
+    
+.activitiesCtn h2{
+    margin: 0;
+  }
+
+/*
 
 .imageCtn {
   display:flex;
@@ -38,39 +56,12 @@
     padding: 10px;
   }
 
-
 .infoCtn {
   text-align: left;
   padding: 5% 8%;
   width: 100%;
 }
-
-
-.buttonCtn {
-  display:flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 10%;
-}
-
-.companyButton {
-  padding: 5%;
-  width: auto;
-  height: auto;
-  background-color: #738685;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: 'Roboto', sans-serif;
-  box-sizing: none;
-}
-
-.companyButton:hover {
-  background-color: #455150;
-}
+*/
 
 input {
   background-color:#738685;
@@ -86,34 +77,41 @@ p {
   height: auto;
 }
 
-/* company activities */
+.buttonCtn {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.companyButton {
+  padding: 2%;
+  width: auto;
+  height: auto;
+  background-color: rgb(197, 202, 204);
+  color: black;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: none;
+}
 
-.mainCtn{
-    display: flex;
-    flex-direction: column;
-    align-items:center ;
-    gap:20px;
-    padding: 15px;
-    width: 100%;
-    }
-    
+.companyButton:hover {
+  background-color: rgb(114, 116, 117);
+  color:white;
+}
 
-.mainCtn h2{
-    margin: 0;
-    width: 200px;
-    }
-
-.activitiesCtn {
+.mainCtn {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: 300px 300px;
-    grid-gap: 10px;
+    grid-gap: 2%;
     grid-auto-flow: auto;
-    
+    padding: 2% 10%;
+    margin-top: 30px; 
 }
-
-
 
 .activity{
     width: 100%;
@@ -123,60 +121,35 @@ p {
 }
 
 .activity .item {
-width: 100%;
-height: 100%;
-overflow: hidden;
-
-border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 40px;
 }
 
 .activity .item img{
- width: 100%;
- height: 100%;
- object-fit: cover;
- object-position: 50% 50%;
- cursor: pointer;
- transition: .5s ease-in-out;
- border-radius: 40px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+  border-radius: 40px;
 }
-
-
-  .mainCtn button {
-    margin: 0;
-    padding: 10px;
-    border-radius: 10px;
-    width: 110px;
-    height: auto;
-    cursor: pointer;
-    border: none;
-    color: black;
-    background-color: rgb(197, 202, 204)
-    
-  }
-
-  .mainCtn button:hover{
-    background-color: rgb(181, 183, 184);
-    color:inherit;
-  }
-  
-
 
 @media screen and (max-width: 1000px){
 .mainCtn {
-grid-template-columns: repeat(2, 1fr);
-}
-
-}
-
+  grid-template-columns: repeat(2, 1fr);
+}}
 
 @keyframes move-down {
-0%{
+0% {
     top:10%
 }
-50%{
+50% {
     top:35%
 }
-100%{
+100% {
     top:50%
 }
 }

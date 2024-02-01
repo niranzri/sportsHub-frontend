@@ -35,6 +35,10 @@
     align-items: center;
   }
 
+  .hero h1 {
+    margin-bottom: 20px;
+  }
+
   .buttonCtn {
     display: flex;
     justify-content: center;
