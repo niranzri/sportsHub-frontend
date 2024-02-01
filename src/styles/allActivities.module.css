@@ -9,15 +9,6 @@ body {
     z-index: 999; 
   } */
   
-
-.outCtn{
-    display: flex;
-    align-items:center ;
-    justify-content: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    }
-
     .pageCtn {
         display: flex;
         flex-direction: column;
@@ -32,19 +23,32 @@ body {
         box-sizing: border-box;
       }
 
-.mainCtn {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: 400px 400px;
-    grid-gap: 10px;
-    grid-auto-flow: auto;
+      .outCtn{
+        display: flex;
+        align-items:center ;
+        gap:50px;
+        padding: 30px;
+        }
+        
+
+    .outCtn h2{
+        margin: 0;
+        width: 200px;
+        }
+
+    .mainCtn {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-auto-rows: 400px 400px;
+        grid-gap: 10px;
+        grid-auto-flow: auto;
     }
 
 
-.filterContainer {
-    display: flex;
-    align-items: center;
-    gap:10px;
+    .filterContainer {
+        display: flex;
+        align-items: center;
+        gap:10px;
     }
 
     .filterSelect {
@@ -57,26 +61,31 @@ body {
       .filterButton {
         padding: 8px 16px;
         border-radius: 4px;
-        background-color: #007bff;
-        color: #fff;
+        background-color:rgb(197, 202, 204);
+        color: black;
         border: none;
         cursor: pointer;
       }
 
-.activity{
-    width: 100%;
-    height: 100%;
-    position: relative;
+      .filter Button button:hover{
+        background-color: rgb(181, 183, 184);
+        color:inherit;
+      }
+
+    .activity{
+        width: 100%;
+        height: 100%;
+        position: relative;
     }
   
-.activity .item {
+    .activity .item {
     width: 100%;
     height: 100%;
     overflow: hidden;
     border-radius: 40px;
     }
   
-.activity .item img{
+    .activity .item img{
      width: 100%;
      height: 100%;
      object-fit: cover;
@@ -85,11 +94,11 @@ body {
      transition: .5s ease-in-out;
    }
 
-.activity:hover .item img{
+    .activity:hover .item img{
     transform: scale(1.5);
     }
 
-.activity .text{
+    .activity .text{
     opacity: 0;
     position: absolute;
     top: 50%;
@@ -104,7 +113,7 @@ body {
     backdrop-filter: blur(5px) saturate(1.8);
     }
 
-.activity:hover .text{
+    .activity:hover .text{
     opacity:1;
      animation: move-down .3s linear;
     padding: 1em;
