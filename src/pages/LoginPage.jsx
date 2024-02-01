@@ -9,12 +9,14 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
+const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
 
 const navigate = useNavigate()
 const { saveToken, setUser } = useContext(AuthContext)
 
 const handleEmailChange = (value) => {
     setEmail(value);
+    setIsLoginSuccessful(true);
     // Checks if the password is empty and hides it from display
     if (value.trim() === '') {
       setIsEmailValid(true);
@@ -26,6 +28,7 @@ const handleEmailChange = (value) => {
 
   const handlePasswordChange = (value) => {
     setPassword(value);
+    setIsLoginSuccessful(true);
     // Checks if the password is empty and hides it from display
     if (value.trim() === '') {
       setIsPasswordValid(true);
@@ -48,6 +51,7 @@ const handleSubmit = async (event) => {
         return;
       }
 
+    setIsLoginSuccessful(true); 
     const credentials = { email, password };
 
     try {
@@ -60,16 +64,19 @@ const handleSubmit = async (event) => {
         if (response.status === 200) {
             // If user was logged in successully
             const parsed = await response.json()
-            console.log(parsed)
             const user = parsed.user;
             setUser(user);
             saveToken(parsed.authToken)
             console.log({message: "user id", userId: user.userId})
+            setIsLoginSuccessful(true);
             navigate(`/profile`)
+          } else {
+            setIsLoginSuccessful(false);
           }
 
     } catch (error) {
         console.log(error);
+        setIsLoginSuccessful(false);
     }
 };
 
@@ -104,6 +111,13 @@ return (
                 )}
             </div>
             <button type='submit' className={`${classes.accessButton} ${classes.loginButton}`}> Log In </button>
+            <div className={classes.notificationCtn}>
+              {!isLoginSuccessful && (
+                <div className={classes.notification}>
+                  * No user found.
+                </div>
+              )}
+            </div>
         </form>
         <div className={classes.textLogin}>
           <h3>Don't have an account yet?</h3>

@@ -84,14 +84,22 @@ const navigate = useNavigate()
     }
   }
 
+  const isValidImageUrl = (url) => {
+    const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/;
+    return urlRegex.test(url);
+  }
+
   const handleAddCompany = async () => {
     if (!company?.value?._id) {
-      const newCompany = {
+      let newCompany = {
         name: companyName,
         city: companyCity,
         address: companyAddress,
         postcode: companyPostcode, 
-        image: companyImage,
+      }
+
+      if (isValidImageUrl(companyImage)) {
+        newCompany.image = companyImage;
       }
 
     try {
@@ -109,7 +117,6 @@ const navigate = useNavigate()
         
         const fetchCompanyResponse = await fetch(`${import.meta.env.VITE_API_URL}/api/companies/${newCompanyResponse._id}`);
         const fetchedCompany = await fetchCompanyResponse.json();
-
 
       // Updates the state with the fetched company
         setCompany({ label: fetchedCompany.name, value: fetchedCompany });
