@@ -4,6 +4,10 @@ h3 {
     text-shadow: 1px 1px 5px #4D4242;
 }
 
+h4 {
+    margin: 10px 0 5px 0;
+}
+
 .pageCtn {
     display: flex;
     flex-direction: column;
@@ -24,8 +28,8 @@ h3 {
     justify-content: center;
     align-items: center; 
     margin-top: 5%;
-    background-color: rgb(184, 215, 212);
     background-color: #7BB2CC;
+    box-shadow: 0 4px 8px rgba(35, 57, 67, 0.5);
     border-radius: 8px;
     width: 60vw;
     max-width: 600px;
