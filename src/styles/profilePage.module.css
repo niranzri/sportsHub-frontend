@@ -15,7 +15,7 @@
   flex-direction: column;
   flex: 4;
   height: 100vh;
-  //border-right: 1px solid black;
+  /* border-right: 1px solid black;*/
   color: black;
   max-width: 400px;
   background-color: white;
@@ -79,29 +79,30 @@ p {
 
 .buttonCtn {
   display:flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
+  width: 200px;
 }
 
-.companyButton {
-  padding: 2%;
-  width: auto;
-  height: auto;
-  background-color: rgb(197, 202, 204);
-  color: black;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-family: 'Roboto', sans-serif;
-  box-sizing: none;
-}
+  .activitiesCtn button {
+    padding: 10px;
+    width: 100%; 
+    height: auto;
+    background-color: rgb(197, 202, 204);
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+  }
 
-.companyButton:hover {
-  background-color: rgb(114, 116, 117);
-  color:white;
-}
+  .activitiesCtn button:hover {
+    background-color: rgb(114, 116, 117);
+    color: white;
+  }
 
 .mainCtn {
     display: grid;
