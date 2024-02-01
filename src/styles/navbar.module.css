@@ -8,7 +8,7 @@
     right: 0;
     width: 100vw;
     height: 60px;
-    position: fixed;
+    position: absolute;
     border-bottom: 0.5px solid grey;
     padding-left: 20px;
 }
@@ -34,7 +34,7 @@
 
 .logoutButton:hover {
     color: inherit;
-    background-color:currentColor;
+    background-color:transparent;
 }
 
 
