@@ -96,5 +96,33 @@
     height: auto;
   }
 
+  @media (max-width: 768px){
+    .pageCtn {
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+    }
+
+    .profileCtn {
+      background-color: rgb(237, 238, 238);
+      margin-bottom: 50px;
+    }
+    
+    .activitiesCtn {
+      grid-template-columns: repeat(2, 1fr);
+      margin-bottom: 50px;
+    }}
+    
+    @keyframes move-down {
+    0% {
+        top:10%
+    }
+    50% {
+        top:35%
+    }
+    100% {
+        top:50%
+    }
+    }
 
       

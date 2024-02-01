@@ -36,7 +36,7 @@ const CompanyActivityDetailsPage = () => {
     try {
       const response = await fetchWithToken(`/activities/${activityId}`, 'DELETE');
       if (response.status === 204) {
-        navigate('/');
+        navigate('/profile');
       }
     } catch (error) {
       console.log(error);

@@ -116,9 +116,21 @@ p {
   border-radius: 40px;
 }
 
-@media screen and (max-width: 1000px){
-.mainCtn {
+@media (max-width: 768px){
+.pageCtn {
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+}
+
+.profileCtn {
+  background-color: rgb(237, 238, 238);
+  padding-bottom: 50px;
+}
+
+.activitiesCtn {
   grid-template-columns: repeat(2, 1fr);
+  padding-bottom: 50px;
 }}
 
 @keyframes move-down {
@@ -132,12 +144,4 @@ p {
     top:50%
 }
 }
-
-
-@media (max-width: 768px) { 
-  .profileCtn {
-    border-right: 0px;
-    border-bottom: 1px solid black;
-  }
-}
-    
+ 

@@ -75,6 +75,7 @@ const CompanyCreateActivityPage = () => {
                 id='type'
                 value={type}
                 onChange={event => setType(event.target.value)}
+                required
               /></label>
 
               <label htmlFor='schedule'><span> Schedule: </span>
@@ -83,6 +84,7 @@ const CompanyCreateActivityPage = () => {
                 id='schedule'
                 value={schedule}
                 onChange={event => setSchedule(event.target.value)}
+                required
               />
               </label>
                   
@@ -92,6 +94,7 @@ const CompanyCreateActivityPage = () => {
                 id='image'
                 value={image}
                 onChange={event => setImage(event.target.value)}
+                required
               />
               </label>
 
