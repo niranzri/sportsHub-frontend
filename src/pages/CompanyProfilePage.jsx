@@ -45,7 +45,7 @@ const CompanyProfilePage = () => {
                 <h1>All the activities of your company</h1>
                 
                 <button type='button'>
-                <Link to={`/companies/${user?.company}/createActivity`}>Create an activity</Link>
+                <Link to={`/companies/${user?.company}/createActivity`}>Add an activity</Link>
             </button>
                 
                 <div className={classes.activitiesCtn}>
