@@ -28,7 +28,7 @@ const CompanyCreateActivityPage = () => {
           
           const activity = await response.json()
           console.log(activity)
-          navigate(`/activityDetails/${activity._id}`)
+          navigate(`/profile`)
         } else {
           console.log('Something went wrong')
         }
