@@ -5,11 +5,10 @@ const Footer = () => {
   return (  
     <footer className={classes.footer}>  
       <p className={classes.footerText}>© 2024 SportsHub</p>
-      {/*<div>
-        <p>Hristina</p>
-        <p>Noelia</p>
-        <p>Mrine</p>
-      </div>*/} 
+
+        <p>By Hristina, Noelia & Marine</p>
+        
+ 
     </footer>
 
   );
