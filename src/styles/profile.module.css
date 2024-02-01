@@ -72,7 +72,7 @@
     box-sizing: none;
   }
 
-  button:hover {
+  .companyButton:hover {
     background-color: #455150;
   }
 

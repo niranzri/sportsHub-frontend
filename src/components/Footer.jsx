@@ -4,11 +4,8 @@ import classes from '../styles/footer.module.css';
 const Footer = () => {
   return (  
     <footer className={classes.footer}>  
-      <p className={classes.footerText}>© 2024 SportsHub</p>
-
-        <p>By Hristina, Noelia & Marine</p>
-        
- 
+      <p>© 2024 SportsHub</p>
+      <p>By Hristina, Noelia & Marine</p>
     </footer>
 
   );

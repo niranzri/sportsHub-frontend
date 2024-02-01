@@ -103,10 +103,19 @@ return (
                     </div>
                 )}
             </div>
-            <button type='submit' className={classes.accessButton}> Log In </button>
+            <button type='submit' className={`${classes.accessButton} ${classes.loginButton}`}> Log In </button>
         </form>
-    <p className={classes.text}>Don't have an account yet?</p>
-        <Link to={'/signup'}> <span> Sign Up </span> </Link>
+        <div className={classes.textLogin}>
+          <h3>Don't have an account yet?</h3>
+          <div className={classes.btnCtn}>
+            <button 
+              type='button' 
+              className={classes.accessButton}
+              onClick={() => navigate('/signup')}> 
+              Sign up
+            </button>
+          </div>
+        </div>
     </div>
  );
 

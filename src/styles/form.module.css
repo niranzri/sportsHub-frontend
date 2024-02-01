@@ -1,14 +1,22 @@
+h3 {
+    margin: 10px;
+    color:white;
+    text-shadow: 1px 1px 5px #4D4242;
+}
+
 .pageCtn {
     display: flex;
     flex-direction: column;
     flex: 1;
     margin-top: 60px;
-    height: calc(100vh - 60px);
     overflow-y: auto; /* adds scroll if content overflows */
     justify-content: flex-start;
     align-items: center;
+    box-sizing: border-box;
+    background-image: url('../pictures/form.jpg');
+    background-size: cover;
+    background-position: center;
   }
-
 
 .form {
     display: flex;
@@ -17,10 +25,11 @@
     align-items: center; 
     margin-top: 5%;
     background-color: rgb(184, 215, 212);
+    background-color: #7BB2CC;
     border-radius: 8px;
     width: 60vw;
-    padding: 2%;
-    box-sizing: border-box;
+    max-width: 600px;
+    padding: 1% 2%;
     color: black;
 }
 
@@ -33,7 +42,8 @@
 .form label span {
     width: 20%;
     text-align: left;
-    padding-left: 5%;
+    display: flex;
+    align-items: center;
 }
 
 .companyCtn {
@@ -41,10 +51,22 @@
     height: 50%;
     flex: 1;
     text-align: left;
+    margin-top: 8px;
     margin-left: 10%;
     color: black;
     font-size: 14px;
 }
+
+.companyExtraCtn {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
 
 .form input {
     width: auto;
@@ -74,16 +96,6 @@
 }
 
 .notificationCtn {
-    margin-bottom: 10px;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    width: 100%;
-    height: auto;
-}
-
-.buttonCtn {
-    margin-bottom: 10px;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -93,18 +105,26 @@
 
 .notification {
     height: auto;
-    width: 65%;
+    width: 70%;
     font-size: 12px;
     color:red;
     text-align: justify;
 }
 
+.btnCtn {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+}
+
 .accessButton {
-    padding: 10%;
     margin: 10px;
     width: 100px;
     height: 35px;
-    background-color: #738685;
+    background-color: #326982;
     color: white;
     border: none;
     border-radius: 10px;
@@ -112,10 +132,21 @@
     transition: background-color 0.3s ease;
     font-family: 'Roboto', sans-serif;
     box-sizing: none;
-  }
+}
 
-button:hover {
-    //background-color: #C5B8D7; 
-    //color: white;
-    background-color: #455150;
+.loginButton {
+    background-color: #233943;
+}
+
+.accessButton:hover {
+    background-color: #988786;
+}
+
+.textLogin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 20px;
+    color: black;
 }

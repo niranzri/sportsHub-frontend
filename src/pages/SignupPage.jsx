@@ -16,10 +16,12 @@ const [companyName, setCompanyName] = useState('');
 const [companyCity, setCompanyCity] = useState('');
 const [companyAddress, setCompanyAddress] = useState('');
 const [companyPostcode, setCompanyPostcode] = useState('');
+const [companyImage, setCompanyImage] = useState('');
 
 const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
 const [isCompanyAdded, setIsCompanyAdded] = useState(false);
+const [isSubmitClicked, setIsSubmitClicked] = useState(false);
 
 const navigate = useNavigate()
 
@@ -51,10 +53,12 @@ const navigate = useNavigate()
     if (value && value.label === 'Other') {
       setShowCompanyFields(true);
       setCompany({ label: 'Other', value: 'Other' });
+      setIsCompanyAdded(false);
     } else if (value) {
       setShowCompanyFields(false);
       setIsCompanyAdded(true);
       setCompany(value);
+      setIsSubmitClicked(false);
     }
   }
 
@@ -86,7 +90,8 @@ const navigate = useNavigate()
         name: companyName,
         city: companyCity,
         address: companyAddress,
-        postcode: companyPostcode
+        postcode: companyPostcode, 
+        image: companyImage,
       }
 
     try {
@@ -118,8 +123,18 @@ const navigate = useNavigate()
     }
   }
 
+  const handleCompanyNotification = () => {
+    if (isSubmitClicked && !isCompanyAdded) {
+      console.log("You need to add the company before signing up");
+      return true;
+    }
+    return false;
+  };
+
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setIsSubmitClicked(true);
 
     if (!isPasswordValid) {
       console.log("Password does not meet the format requirements");
@@ -131,8 +146,7 @@ const navigate = useNavigate()
       return;
     }
 
-    if (!isCompanyAdded) {
-      console.log("You need to add the company before signing up");
+    if (handleCompanyNotification()) {
       return;
     }
 
@@ -158,7 +172,7 @@ const navigate = useNavigate()
   return (
     <div className={classes.pageCtn}> 
       <form onSubmit={handleSubmit} className={classes.form}>
-      <p> User information </p>
+      <h4> User information </h4>
         <label> <span> Name: </span>
           <input 
                 value={name} 
@@ -233,8 +247,8 @@ const navigate = useNavigate()
                 </div>
         </label>
         {showCompanyFields && (
-          <>
-          <p> Company information </p>
+          <div className={classes.companyExtraCtn}>
+          <h4> Company information </h4>
             <label>
               <span> Name: </span>
               <input
@@ -267,7 +281,14 @@ const navigate = useNavigate()
                 required
               />
             </label>
-          </>
+            <label>
+              <span> Logo URL: </span>
+              <input
+                value={companyImage}
+                onChange={(event) => setCompanyImage(event.target.value)}
+              />
+            </label>
+          </div>
         )}
         <div className={classes.btnCtn}>
           {showCompanyFields && (
@@ -281,6 +302,13 @@ const navigate = useNavigate()
             className={classes.accessButton}> 
             Sign Up 
           </button>
+        </div>
+        <div className={classes.notificationCtn}>
+            {handleCompanyNotification() && (
+              <div className={classes.notification}>
+                * You need to add your company details before signing up.
+              </div>
+            )}
         </div>
       </form>
     </div>
