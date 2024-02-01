@@ -50,6 +50,7 @@ const navigate = useNavigate()
   const handleCompanyChange = (value) => {
     if (value && value.label === 'Other') {
       setShowCompanyFields(true);
+      setCompany({ label: 'Other', value: 'Other' });
     } else if (value) {
       setShowCompanyFields(false);
       setIsCompanyAdded(true);
