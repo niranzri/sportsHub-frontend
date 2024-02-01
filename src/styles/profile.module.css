@@ -4,7 +4,7 @@
     flex: 1;
     margin-top: 60px;
     padding: 0px;
-    //height: calc(100vh - 120px);
+    /*height: calc(100vh - 120px);*/
     overflow-y: auto; /* adds scroll if content overflows */
     width: 100vw;
     box-sizing: border-box;
@@ -17,9 +17,10 @@
     flex: 4;
     height: 100vh;
     max-width: 400px;
-    //border-right: 1px solid black;
+    /*border-right: 1px solid black;*/
     color: black;
     background-color: white;
+    border: none;
   }
 
   .activitiesCtn {
