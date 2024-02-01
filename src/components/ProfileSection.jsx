@@ -4,7 +4,7 @@ import classes from '../styles/profile.module.css';
 
 
 const ProfileSection = () => {
-  const { user } = useContext(AuthContext)
+  const { user, fetchWithToken, logout } = useContext(AuthContext)
   const [userInfo, setUserInfo] = useState();
   // variables edit and delete buttons
   const [editedCompany, setEditedCompany] = useState({});
@@ -20,6 +20,7 @@ const ProfileSection = () => {
             const userData = await response.json();
             setUserInfo(userData);
             setEditedCompany({
+              name: userData.company.name,
               address: userData.company.address,
               postcode: userData.company.postcode,
               city: userData.company.city,
@@ -60,6 +61,18 @@ const ProfileSection = () => {
     setIsEditClicked(!isEditClicked);
     }
 
+    /* to be implemented in the future
+    const handleDelete = async () => {
+      try {
+        const response = await fetchWithToken(`/companies/${userInfo.company._id}`, 'DELETE');
+        if (response.status === 204) {
+          logout();
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    */
 
 
   if (!userInfo) {
@@ -68,7 +81,7 @@ const ProfileSection = () => {
 
     return (
         <>
-        {userInfo && (
+        {userInfo && userInfo.company && (
           <>
           <div className={classes.imageCtn}>
             <img src={userInfo.company.image} alt="Company image" className={classes.imageGym}/>
@@ -82,7 +95,11 @@ const ProfileSection = () => {
             <h3> Company info </h3>
               {isEditClicked ? (
               <>
-                <p> {userInfo.company.name} </p>
+                <input
+                  type="text"
+                  value={editedCompany.name}
+                  onChange={(event) => setEditedCompany({ ...editedCompany, name: event.target.value })}
+                />
                 <input
                   type="text"
                   value={editedCompany.address}
@@ -108,25 +125,26 @@ const ProfileSection = () => {
               </>
             )}
           </div>
+          <div className={classes.buttonCtn}>
           {isEditClicked ? (
-            <div className={classes.buttonCtn}>
               <button
                 type='button'
                 onClick={handleEditCompany}
                 className={classes.companyButton}>
                 Save changes
               </button>
-            </div>
             ) : (
-              <div className={classes.buttonCtn}>
               <button
                 type='button'
                 onClick={() => setIsEditClicked(true)}
                 className={classes.companyButton}>
-                Edit address
+                Edit information
               </button>
-            </div>
             )}
+           {/* <button type="button" onClick={handleDelete} className={classes.companyButton}>
+            Delete
+            </button> */}
+            </div>
           </>
         )}
         </>

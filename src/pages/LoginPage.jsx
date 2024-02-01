@@ -9,7 +9,7 @@ const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const [isPasswordValid, setIsPasswordValid] = useState(true);
 const [isEmailValid, setIsEmailValid] = useState(true);
-const [isLoginSuccessful, setIsLoginSuccessful] = useState(false);
+const [isLoginSuccessful, setIsLoginSuccessful] = useState(true);
 
 const navigate = useNavigate()
 const { saveToken, setUser } = useContext(AuthContext)
