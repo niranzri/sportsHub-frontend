@@ -95,8 +95,10 @@ const AllActivitiesPage = () => {
                     <div className={classeActivities.activity} key={activity._id}>
                         <div className={classeActivities.item}>
                             <Link to={`/activityDetails/${activity._id}`}>
-                                <p className={classeActivities.text}>{activity.type}, {!activity.company ? (<></>): (activity.company.city) } </p>
-                                
+                                <div className={classeActivities.text}>
+                                <p >{activity.type}</p>
+                                <p> {!activity.company ? (<></>): (activity.company.city) }</p>
+                                </div>
                                 <img src={activity.image} alt={activity.type} />
                             </Link>
                         </div>
