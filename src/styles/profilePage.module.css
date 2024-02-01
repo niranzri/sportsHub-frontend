@@ -1,0 +1,191 @@
+.pageCtn {
+    display: flex;
+    flex-direction: row;
+ /*   justify-content: center;*/
+ /*   align-items: center; */
+    flex: 1;
+    margin-top: 60px;
+    padding: 0px;
+    height: calc(100vh - 120px);
+    overflow-y: auto; /* adds scroll if content overflows */
+    width: 100vw;
+    box-sizing: border-box;
+  }
+
+.profileCtn {
+  display: flex;
+  flex-direction: column;
+  flex: 3;
+  height: 100vh;
+  border-right: 1px solid black;
+  color: black;
+  max-width: 400px;
+}
+
+
+
+.imageCtn {
+  display:flex;
+  justify-content:center;
+  align-items: center;
+  font-family: 'Oswald', sans-serif;
+  margin-top: 30px;
+}
+
+.imageCtn img {
+    height: 200px;
+    width: auto;
+    padding: 10px;
+  }
+
+
+.infoCtn {
+  text-align: left;
+  padding: 5% 8%;
+  width: 100%;
+}
+
+
+.buttonCtn {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10%;
+}
+
+.companyButton {
+  padding: 5%;
+  width: auto;
+  height: auto;
+  background-color: #738685;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-family: 'Roboto', sans-serif;
+  box-sizing: none;
+}
+
+.companyButton:hover {
+  background-color: #455150;
+}
+
+input {
+  background-color:#738685;
+  font-size: 16px;
+  padding: 2%;
+  width: 100%;
+  margin: 1% 0%;
+  border-radius: 5px;
+}
+
+p {
+  width: auto;
+  height: auto;
+}
+
+/* company activities */
+
+
+.mainCtn{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    gap:20px;
+    padding: 15px;
+    width: 100%;
+    }
+    
+
+.mainCtn h2{
+    margin: 0;
+    width: 200px;
+    }
+
+.activitiesCtn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 300px 300px;
+    grid-gap: 10px;
+    grid-auto-flow: auto;
+    
+}
+
+
+
+.activity{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+}
+
+.activity .item {
+width: 100%;
+height: 100%;
+overflow: hidden;
+
+border-radius: 40px;
+}
+
+.activity .item img{
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ object-position: 50% 50%;
+ cursor: pointer;
+ transition: .5s ease-in-out;
+ border-radius: 40px;
+}
+
+
+  .mainCtn button {
+    margin: 0;
+    padding: 10px;
+    border-radius: 10px;
+    width: 100px;
+    height: auto;
+    cursor: pointer;
+    border: none;
+    color: black;
+    background-color: rgb(197, 202, 204)
+    
+  }
+
+  .mainCtn button:hover{
+    background-color: rgb(181, 183, 184);
+    color:inherit;
+  }
+  
+
+
+@media screen and (max-width: 1000px){
+.mainCtn {
+grid-template-columns: repeat(2, 1fr);
+}
+
+}
+
+
+@keyframes move-down {
+0%{
+    top:10%
+}
+50%{
+    top:35%
+}
+100%{
+    top:50%
+}
+}
+
+
+@media (max-width: 768px) { 
+  .profileCtn {
+    border-right: 0px;
+    border-bottom: 1px solid black;
+  }
+}
+    

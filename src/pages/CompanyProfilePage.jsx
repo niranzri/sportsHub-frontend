@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext} from "react";
 import { Link } from 'react-router-dom'
-import classes from '../styles/profile.module.css';
+import classes from '../styles/profilePage.module.css';
 import ProfileSection from '../components/ProfileSection.jsx'
 import { AuthContext } from '../contexts/AuthContext'
 
@@ -41,19 +41,27 @@ const CompanyProfilePage = () => {
                 <ProfileSection />
             </div>
 
-            <div className={classes.activitiesCtn}>
+            <div className={classes.mainCtn}>
                 <h1>All the activities of your company</h1>
+                
+                <button type='button'>
                 <Link to={`/companies/${user?.company}/createActivity`}>Create an activity</Link>
+            </button>
+                
+                <div className={classes.activitiesCtn}>
                 {activities.map(activity => (
                  <div className={classes.activity} key={activity._id}>
                     <div className={classes.item} >
                           {<Link to={`/companies/${companyId}/${activity._id}`}>
                                  <p className={classes.text}>{activity.type}</p>
-                                 {<img src={activity.image}  />}
+                                 {<img src={activity.image} alt={activity.type} />}
                           </Link> }     
                      </div>
-                 </div> ))}
-            </div>
+
+                 </div> 
+                 ))}
+                 </div>
+              </div>
     </div>
 
   );
