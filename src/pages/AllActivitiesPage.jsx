@@ -54,15 +54,25 @@ const AllActivitiesPage = () => {
         fetchFilterOptions();
     }, []);
 
+    const [isFilterApplied, setIsFilterApplied] = useState(false);
+
     const handleFilter = () => {
         let filtered = activities;
 
         if (selectedType) {
             filtered = filtered.filter(activity => activity.type === selectedType);
-            
+            setIsFilterApplied(true);
+        } else {
+            setIsFilterApplied(false);
         }
 
         setFilteredActivities(filtered);
+    };
+
+    const clearFilter = () => {
+        setSelectedType('');
+        setIsFilterApplied(false);
+        setFilteredActivities(activities);
     };
 
     return (
@@ -76,7 +86,9 @@ const AllActivitiesPage = () => {
                             <option key={type} value={type}>{type}</option>
                         ))}
                     </select>
-                    <button  className={classeActivities.filterButton} onClick={handleFilter}>Apply Filter</button>
+                    <button className={classeActivities.filterButton} onClick={isFilterApplied ? clearFilter : handleFilter}>
+                    {isFilterApplied ? 'Clear Filter' : 'Apply Filter'}
+                </button>
                 </div>
             </div>
             <div className={`${classeActivities.mainCtn} ${filteredClasses.filteredMainCtn}`}>
