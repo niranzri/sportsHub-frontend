@@ -66,9 +66,7 @@ const AllActivitiesPage = () => {
     };
 
     return (
-        <div>
-            <Navbar />
-            
+        <div className={classeActivities.pageCtn}>       
             <div className={classeActivities.outCtn}>
                 <h2>See our activities</h2>
                 <div className={classeActivities.filterContainer}>

@@ -18,6 +18,20 @@ body {
     margin-right: 10px;
     }
 
+    .pageCtn {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        margin-top: 60px;
+        padding: 0px;
+        height: calc(100vh - 120px);
+        overflow-y: auto; /* adds scroll if content overflows */
+        width: 100vw;
+        box-sizing: border-box;
+      }
+      
 .mainCtn {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
