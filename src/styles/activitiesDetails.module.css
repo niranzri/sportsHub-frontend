@@ -38,19 +38,26 @@
 
     }
  
-
   
-    .buttonCtn button {
+      .buttonCtn {
         display: flex;
-        justify-content: center; 
-        align-items: center; 
-        margin: 0 5px;
-        padding: 6px 8px; 
-        border-radius: 16px;
+      }
+    
+      .buttonCtn button {
+        padding: 10px;
+        border-radius: 10px;
         width: 100px;
-        margin-top: 50px;
+        height: auto;
         cursor: pointer;
         border: none;
+        color: black;
+        margin-top: 20px;
+        background-color: rgb(197, 202, 204)
+      }
+    
+      .buttonCtn button:hover{
+        background-color: rgb(181, 183, 184);
+        color:inherit;
       }
       
    
@@ -60,12 +67,16 @@
       align-items: center;
       top: 50px;
     }
-    
+
     .imageContainer img {
-    max-width: 500px;
-    height: 500px;
-    object-fit: cover; 
+      max-width: 450px;
+      height: 450px;
+      object-fit: cover; 
+      border-radius: 20px;;
+      padding: 0;
     }
+  
+    
   
   @media (max-width: 768px) { 
     .mainCtn {
