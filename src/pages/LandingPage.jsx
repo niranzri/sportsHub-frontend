@@ -11,6 +11,10 @@ const LandingPage = () => {
     navigate('/allActivities');
   };
 
+  const handleSignUpClick = () => {
+    navigate('/signup');
+  };
+
   return (
     <div className={classes.pageCtn}>
       <div className={classes.hero}>
@@ -22,7 +26,7 @@ const LandingPage = () => {
       </div>
       <div className={classes.bellowHero}>
         <div className={classes.textContent}>
-          <h1>Endless <br/>  variety</h1>
+          <h1>Endless variety</h1>
           <p>Access hundreds of sports facilities and fitness classes all in one app</p>
             </div>
           <div className={classes.textContent}>
@@ -40,15 +44,18 @@ const LandingPage = () => {
           <img src={sportsImage} alt="Feature" />
         </div>
         <div className={classes.textContent}>
-          <h2>Get Active wherever you want!</h2>
-          <p>Some more text here maybe?</p> 
+          <h2>Interested of becoming part of our SportsHub and offer your sports activity?</h2>
+          <p>Then you are in the right place! Sign up and join the other companies</p> 
+          <div className={classes.buttonCtn}>
+        <button type='button' onClick={handleSignUpClick}>Sign Up</button>
+      </div>
         </div>
       </div>
        <div className={classes.mapsContainer}>
        <img src={mapsImage} alt="Maps" />
         <div className={classes.infoBox}>
       <h1>Discover your possibilities</h1>
-      <h2>See all the venues offering your favorite sports and wellness activities. For now only in Berlin, utrecht and Nantes. European-wide coming soon!</h2>
+      <h2>See all the venues offering your favorite sports and wellness activities.</h2>
       <div className={classes.buttonCtn}>
         <button type='button' onClick={handleExploreClick}>Explore</button>
       </div>
@@ -56,8 +63,6 @@ const LandingPage = () => {
   </div>
 </div>
    
-      
-    
   );
 }
 

@@ -4,14 +4,14 @@
     align-items: center;
     background-color: white;
     top: 0;
+    left: 0;
+    right: 0;
     width: 100vw;
     height: 60px;
-    position: absolute;
-    border-bottom: 0.5px solid black;
+    position: fixed;
+    border-bottom: 0.5px solid grey;
     padding-left: 20px;
-    z-index: 1; 
 }
-
 
 .linksContainer {
     display: flex;
@@ -23,7 +23,6 @@
     margin-right: 20px;
 }
 
-
 .logoutButton{
     color: black;
     cursor: pointer;
@@ -33,9 +32,13 @@
     font-size: 16px;
 }
 
-.logo {
-    margin-right: auto;
-    color:black;
+.logoutButton:hover {
+    color: inherit;
+    background-color:currentColor;
 }
+
+
+
+
 
 
