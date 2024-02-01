@@ -1,12 +1,31 @@
     .mainCtn{
     display: flex;
     flex-direction: row;
-    gap: 20px;
+    justify-content: center;
+  /*  align-items: center;*/
+
+     gap: 60px;
+    }
+
+    .pageCtn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      flex: 1;
+      margin-top: 60px;
+      padding: 0px;
+      height: calc(100vh - 120px);
+      overflow-y: auto; /* adds scroll if content overflows */
+      width: 100vw;
+      box-sizing: border-box;
     }
   
     .textCtn {
       color: black;
       width: 700px;
+      gap: 20px;
+     /* margin: 10px;*/
     }
   
     .textCtn > p, h2 {
@@ -15,7 +34,8 @@
       justify-content: flex-start;
       align-items: center;
       flex-wrap: nowrap;
-      gap: 10px;
+      gap: 20px;
+
     }
  
 

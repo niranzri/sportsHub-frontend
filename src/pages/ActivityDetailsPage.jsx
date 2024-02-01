@@ -43,6 +43,7 @@ const ActivityDetailsPage = () => {
 
   return (
     <>
+    <div className={classes.pageCtn}>
       <div className={classes.mainCtn}>
         <div className={classes.imageContainer}>
           <img src={activity.image} alt="Activity Image" />
@@ -61,6 +62,7 @@ const ActivityDetailsPage = () => {
             </button>
           </div>
         </div>
+      </div>
       </div>
     </>
   );
