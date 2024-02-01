@@ -4,11 +4,7 @@ body {
     text-align: center;
   }
 
-  /* .mainContent {
-    position: relative; 
-    z-index: 999; 
-  } */
-  
+
     .pageCtn {
         display: flex;
         flex-direction: column;
@@ -21,6 +17,7 @@ body {
         overflow-y: auto; /* adds scroll if content overflows */
         width: 100vw;
         box-sizing: border-box;
+        background-color: rgb(237, 238, 238);
       }
 
       .outCtn{
@@ -42,6 +39,7 @@ body {
         grid-auto-rows: 400px 400px;
         grid-gap: 10px;
         grid-auto-flow: auto;
+        padding: 2% 5%;
     }
 
 

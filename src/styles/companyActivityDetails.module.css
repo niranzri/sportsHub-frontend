@@ -41,38 +41,35 @@
       align-items: center;
       gap: 8px;
     }
+
+    .textCtn input {
+      background-color: white;
+      font-size: 16px;
+      padding: 2%;
+      width: 100%;
+      margin: 1% 0%;
+      border-radius: 5px;
+    }
   
   
-  .buttonCtn button {
+  .detailsButton {
       padding: 10px;
       border-radius: 10px;
       width: 100px;
       cursor: pointer;
-    }
-    
-    .deleteButton  {
+      background-color:white;
       border: 1px solid grey;
-      background-color: transparent;
-      color: black;
     }
-  
-    .editButton {
-      border: 1px solid grey;
-      background-color: transparent;
-      color: black;
-    }
-  
+
     .saveButton {
-      border: 1px solid rgb(197, 202, 204);
-      background-color: rgb(197, 202, 204);
-      color: aliceblue;
+      padding: 10px;
+      border-radius: 10px;
+      width: 100px;
+      cursor: pointer;
+      background-color: rgb(114, 116, 117);
+      color:white;
     }
   
-    .backButton {
-      border: 1px solid grey;
-      background-color: transparent;
-      color: black;
-    }
   
     .imageContainer {
       display: flex;

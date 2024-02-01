@@ -4,7 +4,6 @@
     flex: 1;
     margin-top: 60px;
     padding: 0px;
-    //height: calc(100vh - 120px);
     overflow-y: auto; /* adds scroll if content overflows */
     width: 100vw;
     box-sizing: border-box;
@@ -17,7 +16,6 @@
     flex: 4;
     height: 100vh;
     max-width: 400px;
-    //border-right: 1px solid black;
     color: black;
     background-color: white;
   }
@@ -37,6 +35,13 @@
     height: 200px; 
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+
+  .imageCtn img {
+    height: 100%; 
+    width: 100%;
+    padding: 10px;
+    object-fit: contain; 
   }
 
   .infoCtn {

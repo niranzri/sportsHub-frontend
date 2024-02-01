@@ -40,28 +40,6 @@
     margin: 0;
   }
 
-/*
-
-.imageCtn {
-  display:flex;
-  justify-content:center;
-  align-items: center;
-  font-family: 'Oswald', sans-serif;
-  margin-top: 30px;
-}
-
-.imageCtn img {
-    height: 200px;
-    width: auto;
-    padding: 10px;
-  }
-
-.infoCtn {
-  text-align: left;
-  padding: 5% 8%;
-  width: 100%;
-}
-*/
 
 input {
   background-color:#738685;
@@ -110,7 +88,7 @@ p {
     grid-auto-rows: 300px 300px;
     grid-gap: 2%;
     grid-auto-flow: auto;
-    padding: 2% 10%;
+    padding: 2% 5%;
     margin-top: 30px; 
 }
 

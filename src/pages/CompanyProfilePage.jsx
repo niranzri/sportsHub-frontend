@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext} from "react";
 import { Link } from 'react-router-dom'
-import classes from '../styles/profilePage.module.css';
+import classes from '../styles/companyProfilePage.module.css';
 import ProfileSection from '../components/ProfileSection.jsx'
 import { AuthContext } from '../contexts/AuthContext'
 

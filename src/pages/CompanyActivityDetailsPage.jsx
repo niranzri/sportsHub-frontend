@@ -66,6 +66,7 @@ const CompanyActivityDetailsPage = () => {
     setEditMode(!editMode);
   };
 
+  
   const renderSchedule = () => {
     if (activity.schedule && activity.schedule.includes('Monday')
       && activity.schedule.includes('Tuesday') && activity.schedule.includes('Wednesday')
@@ -73,8 +74,9 @@ const CompanyActivityDetailsPage = () => {
       && activity.schedule.includes('Saturday') && activity.schedule.includes('Sunday')) {
       return 'Every day from Monday to Sunday';
     }
-    return activity.schedule?.join(', ');
+    return activity.schedule;
   };
+  
 
   return activity ? (
       <div className={classesProfile.pageCtn}>
@@ -113,14 +115,14 @@ const CompanyActivityDetailsPage = () => {
                     Save
                   </button>
                 ) : (
-                  <button type="button" onClick={handleEditSaveClick} className={classes.editButton}>
+                  <button type="button" onClick={handleEditSaveClick} className={classes.detailsButton}>
                     Edit
                   </button>
                 )}
-                <button type="button" onClick={handleDelete} className={classes.deleteButton}>
+                <button type="button" onClick={handleDelete} className={classes.detailsButton}>
                   Delete
                 </button>
-                <button type="button" onClick={handleBackClick} className={classes.backButton}>
+                <button type="button" onClick={handleBackClick} className={classes.detailsButton}>
                   Back
                 </button>
               </div>
