@@ -56,16 +56,16 @@ p {
 }
 
 .buttonCtn {
-  display:flex;
-
-  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
-  width: 200px;
+  width: 500px;
 }
 
   .activitiesCtn button {
     padding: 10px;
-    width: 100%; 
+    width: auto; 
     height: auto;
     background-color: rgb(197, 202, 204);
     color: black;
@@ -80,6 +80,11 @@ p {
   .activitiesCtn button:hover {
     background-color: rgb(114, 116, 117);
     color: white;
+  }
+
+  .companyButton:hover {
+    background-color: rgb(114, 116, 117);
+    color:white;
   }
 
 .mainCtn {
@@ -121,6 +126,15 @@ p {
   flex-direction:column;
   justify-content:center;
   align-items:center;
+}
+
+.buttonCtn {
+  flex-direction: column;
+}
+
+
+.activitiesCtn button {
+  margin: 10px;
 }
 
 .profileCtn {

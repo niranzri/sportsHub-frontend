@@ -1,16 +1,6 @@
-  .activitiesCtn {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: top;
-    flex: 6;
-    height: 100vh;
-    background-color: rgb(237, 238, 238);
-  }
-  
+
   .textCtn {
       color: black;
-      width: 700px;
       gap:10px;
       padding: 5%;
     }
@@ -69,6 +59,16 @@
       background-color: rgb(114, 116, 117);
     }
   
+    .activitiesCtn {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: top;
+      flex: 6;
+      height: 100vh;
+      background-color: rgb(237, 238, 238);
+    }
+    
     .imageContainer {
       display: flex;
       justify-content: center;
@@ -78,7 +78,8 @@
     
     .imageContainer img {
       max-width: 350px;
-      height: 350px;
+      height:  350px;
+      width: auto;
       object-fit: cover; 
       border-radius: 20px;;
       padding: 0;
@@ -86,6 +87,11 @@
   
    
   @media (max-width: 768px) { 
+
+    .pageCtn {
+      flex-direction:column;
+    }
+    
     .activitiesCtn {
       flex-direction:column;
       justify-content: center;

@@ -62,13 +62,12 @@ const CompanyCreateActivityPage = () => {
 
 
         <div className={classesCreate.hero}>
-        <h2>Create a new activity for {comp.name} </h2> 
-        
           <form
               onSubmit={handleSubmit}
               action='submit'
               style={{ display: 'flex', flexDirection: 'column' }}
               className={classesCreate.form} >
+              <h2>Create a new activity for {comp.name} </h2> 
               <label htmlFor='type'><span> Type: </span>
               <input
                 type='text'

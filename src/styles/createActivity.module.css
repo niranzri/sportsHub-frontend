@@ -1,6 +1,7 @@
 h2 {
+    margin: 20px 0px 20px 0px;
+    padding: 10px;
     color: black;
-
 }
 
 .pageCtn {
@@ -15,7 +16,7 @@ h2 {
 }
 
 .hero {
-    background-image: url('../pictures/yoga.jpg');
+    background-image: url('../pictures/yoga2.jpg');
     object-fit: cover;
     background-size: cover;
     background-position: center;
@@ -36,7 +37,6 @@ h2 {
     flex-direction: column;
     flex: 3;
     height: 100vh;
-    border-right: 1px solid black;
     color: black;
     max-width: 400px;
 }
@@ -48,10 +48,11 @@ h2 {
     justify-content: center;
     align-items: center; 
     margin-top: 5%;
+    margin-bottom: 5%;
     -webkit-backdrop-filter: blur(5px) saturate(1.8);
-    backdrop-filter: blur(5px) saturate(1.8);
+    backdrop-filter: blur(20px) saturate(1);
     border-radius: 8px;
-    width: 60vw;
+    width: 50vw;
     padding: 2%;
     box-sizing: border-box;
     color: black;
@@ -63,11 +64,15 @@ h2 {
     display: flex;
 }
 
+
 .form label span {
     width: 20%;
     text-align: left;
     padding-left: 5%;
+    display: flex;
+    align-items: center;
 }
+
 
 .companyCtn {
     width: auto;
@@ -98,10 +103,6 @@ h2 {
     border: 1px solid #ccc;
     border-radius: 4px; 
 }
-
-/*.text {
-    color: black;
-}*/
 
 .textCtn {
     color: aqua;
@@ -141,7 +142,7 @@ h2 {
     margin: 10px;
     width: 100px;
     height: 35px;
-    background-color: rgb(197, 202, 204);
+    background-color: rgb(114, 116, 117);
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -153,5 +154,22 @@ h2 {
   .accessButton:hover {
     background-color: rgb(114, 116, 117);
     color:white;
+  }
+
+  @media (max-width: 768px) { 
+
+    .pageCtn {
+        flex-direction:column;
+    }
+
+    .hero {
+        margin-top: 50px;
+        width: 100vw;
+        padding-bottom: 50px;
+    }
+
+    .form {
+        width: 90%;
+    }
   }
 
