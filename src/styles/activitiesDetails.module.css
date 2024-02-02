@@ -18,6 +18,7 @@
       overflow-y: auto; /* adds scroll if content overflows */
       width: 100vw;
       box-sizing: border-box;
+      background-color: rgb(237, 238, 238);
     }
   
     .textCtn {
